@@ -1,0 +1,151 @@
+/* =========================================================
+   PAGE CONTACT
+   ========================================================= */
+
+
+/* =========================================================
+   PARCHEMIN
+   ========================================================= */
+
+.parchment-sheet {
+    transform-origin: top center;
+    animation: parchment-open 0.8s ease-out forwards;
+}
+
+
+/* Contenu du parchemin */
+
+.parchment-roll {
+    position: relative;
+    overflow: hidden;
+
+    animation: roll-appear 0.8s ease-out forwards;
+
+    box-shadow:
+        0 20px 40px rgba(68, 58, 44, 0.18),
+        inset 0 0 30px rgba(185, 162, 122, 0.12);
+}
+
+
+/* Texture / vieillissement léger du papier */
+
+.parchment-roll::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(128, 107, 78, 0.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(128, 107, 78, 0.07),
+            transparent 30%
+        );
+
+    opacity: 0.8;
+}
+
+
+/* Le contenu reste au-dessus de la texture */
+
+.parchment-roll > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   ANIMATION D'OUVERTURE
+   ========================================================= */
+
+@keyframes parchment-open {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scaleY(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+
+/* Apparition du contenu */
+
+@keyframes roll-appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   MODE SOMBRE
+   ========================================================= */
+
+.dark .parchment-roll {
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.45),
+        inset 0 0 30px rgba(203, 185, 150, 0.06);
+}
+
+.dark .parchment-roll::before {
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(203, 185, 150, 0.05),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(203, 185, 150, 0.04),
+            transparent 30%
+        );
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .parchment-sheet,
+    .parchment-roll {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767px) {
+    .parchment-sheet {
+        width: 100%;
+    }
+
+    .parchment-roll {
+        box-shadow:
+            0 12px 25px rgba(68, 58, 44, 0.15),
+            inset 0 0 20px rgba(185, 162, 122, 0.1);
+    }
+}

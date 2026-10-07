@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>À propos - Brandon</title>
+
+    <link rel="stylesheet" href="../../src/css/output.css">
+    <link rel="stylesheet" href="../../src/css/about.css">
+</head>
+
+<body class="about-page">
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <nav class="site-nav">
+        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
+            <!-- Logo -->
+            <a
+                href="../../index.html"
+                class="text-xl font-bold tracking-wide text-parchemin-100 transition-colors hover:text-accent-300"
+            >
+                ✦ Mon Portfolio
+            </a>
+
+            <!-- Navigation desktop -->
+            <div id="nav-links" class="hidden items-center gap-8 md:flex">
+                <a href="../../index.html" class="nav-link">
+                    Accueil
+                </a>
+
+                <a href="./about.html" class="nav-link">
+                    À propos
+                </a>
+
+                <a href="./wip.html" class="nav-link">
+                    Rôle &amp; Fairies
+                </a>
+
+                <a href="./projects.html" class="nav-link">
+                    Projets
+                </a>
+
+                <a href="./contact.html" class="nav-link">
+                    Contact
+                </a>
+
+                <button
+                    id="theme-button"
+                    type="button"
+                    class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 transition-all hover:border-accent-400/50 hover:bg-parchemin-50/10"
+                    aria-label="Activer le thème sombre"
+                >
+                    🌙
+                </button>
+            </div>
+
+            <!-- Menu mobile -->
+            <div class="flex items-center gap-2 md:hidden">
+                <button
+                    id="theme-button"
+                    type="button"
+                    class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2"
+                    aria-label="Activer le thème sombre"
+                >
+                    🌙
+                </button>
+
+                <button
+                    id="menu-button"
+                    type="button"
+                    class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 text-parchemin-100"
+                    aria-label="Ouvrir le menu"
+                >
+                    ☰
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu mobile -->
+        <div
+            id="mobile-menu"
+            class="mobile-menu hidden flex-col gap-4 border-t border-parchemin-100/10 px-6 py-5 md:hidden"
+        >
+            <a href="../../index.html" class="nav-link">
+                Accueil
+            </a>
+
+            <a href="./about.html" class="nav-link">
+                À propos
+            </a>
+
+            <a href="./wip.html" class="nav-link">
+                Rôle &amp; Fairies
+            </a>
+
+            <a href="./projects.html" class="nav-link">
+                Projets
+            </a>
+
+            <a href="./contact.html" class="nav-link">
+                Contact
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+         ===================================================== -->
+
+    <main>
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section
+            class="relative -mt-[1px] flex h-[520px] items-center overflow-hidden"
+        >
+
+            <!-- Image de fond -->
+
+            <div
+                class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+                style="
+                    background-image:
+                        url('../../public/images/bg_hero_index.jpg');
+                "
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Overlay -->
+
+            <div
+                class="absolute inset-0 bg-cuir-950/60"
+                aria-hidden="true"
+            ></div>
+
+
+            <!-- Contenu -->
+
+            <div
+                class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24"
+            >
+
+                <div class="max-w-3xl">
+
+                    <div class="mb-6">
+
+                        <span class="badge badge-accent">
+                            ✦ À propos de moi
+                        </span>
+
+                    </div>
+
+
+                    <h1
+                        class="text-4xl font-bold leading-tight text-parchemin-50 sm:text-5xl md:text-6xl"
+                    >
+                        Mon aventure dans le développement.
+                    </h1>
+
+
+                    <p
+                        class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl"
+                    >
+                        Découvrez mon parcours, mes apprentissages,
+                        mes centres d'intérêt et les expériences qui
+                        construisent mon univers dans le développement
+                        informatique.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+            PARCOURS
+            ================================================= -->
+
+        <section class="section about-parcours-section">
+            <div class="section-heading">
+                <span class="section-eyebrow">
+                    Mon parcours
+                </span>
+
+                <h2 class="section-title">
+                    Une aventure qui se construit pas à pas.
+                </h2>
+
+                <p class="section-description">
+                    Chaque étape de mon parcours m'a permis d'acquérir de
+                    nouvelles compétences et de mieux comprendre le monde
+                    du développement informatique.
+                </p>
+            </div>
+
+        <!-- =====================================================
+            BLOC 1 — TIMELINE
+            ===================================================== -->
+
+            <div class="about-timeline-block">
+
+                <div class="about-timeline">
+
+                    <div
+                        class="timeline-line"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div
+                        id="timeline-progress"
+                        class="timeline-progress"
+                        aria-hidden="true"
+                    ></div>
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-label">
+                                2022
+                            </span>
+
+                            <h3>
+                                Première découverte
+                            </h3>
+
+                            <p>
+                                Je commence à m'intéresser à l'informatique
+                                et à découvrir progressivement la programmation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-label">
+                                2024
+                            </span>
+
+                            <h3>
+                                Premiers projets
+                            </h3>
+
+                            <p>
+                                Je commence à réaliser mes premiers projets
+                                personnels et à expérimenter différentes
+                                technologies.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-label">
+                                2025
+                            </span>
+
+                            <h3>
+                                Formation
+                            </h3>
+
+                            <p>
+                                J'approfondis mes connaissances en programmation,
+                                en développement web et dans l'utilisation
+                                des outils de développement.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="timeline-item">
+
+                        <div class="timeline-content">
+
+                            <span class="timeline-label">
+                                Aujourd'hui
+                            </span>
+
+                            <h3>
+                                Construire la suite
+                            </h3>
+
+                            <p>
+                                Je continue à apprendre en réalisant des projets
+                                plus ambitieux et en explorant de nouvelles
+                                technologies.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        <!-- =====================================================
+            BLOC 2 — CARTE MAGIQUE
+            ===================================================== -->
+
+            <div class="about-journey-card-block">
+
+                <div class="journey-card-wrapper">
+
+                    <div
+                        class="journey-card"
+                        id="journey-card"
+                    >
+
+                        <!-- FACE AVANT -->
+
+                        <div
+                            class="journey-card-face journey-card-front"
+                        >
+
+                            <div
+                                class="journey-card-glow"
+                                aria-hidden="true"
+                            ></div>
+
+                            <div
+                                class="journey-card-stars"
+                                aria-hidden="true"
+                            >
+                                <span>✦</span>
+                                <span>✧</span>
+                                <span>◇</span>
+                                <span>✦</span>
+                                <span>·</span>
+                            </div>
+
+                            <div
+                                class="journey-rune"
+                                aria-hidden="true"
+                            >
+                                ✦
+                            </div>
+
+                            <div class="journey-card-content">
+
+                                <span class="journey-card-eyebrow">
+                                    Mon aventure
+                                </span>
+
+                                <h3>
+                                    Un parcours en construction
+                                </h3>
+
+                                <p>
+                                    Mon parcours dans le développement
+                                    informatique est encore jeune, mais
+                                    chaque projet représente une nouvelle
+                                    étape de mon apprentissage.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    id="journey-flip"
+                                    class="journey-flip-button"
+                                >
+                                    Découvrir mon parcours
+                                    <span>→</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FACE ARRIÈRE -->
+
+                        <div
+                            class="journey-card-face journey-card-back"
+                        >
+
+                            <div class="journey-card-content">
+
+                                <span class="journey-card-eyebrow">
+                                    Ce que je recherche
+                                </span>
+
+                                <h3>
+                                    Continuer à progresser
+                                </h3>
+
+                                <div class="journey-info-list">
+
+                                    <div class="journey-info-item">
+
+                                        <div class="journey-info-icon">
+                                            ✦
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Apprendre
+                                            </strong>
+
+                                            <span>
+                                                Découvrir constamment
+                                                de nouvelles technologies.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="journey-info-item">
+
+                                        <div class="journey-info-icon">
+                                            ⚔
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Expérimenter
+                                            </strong>
+
+                                            <span>
+                                                Transformer mes idées
+                                                en projets concrets.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="journey-info-item">
+
+                                        <div class="journey-info-icon">
+                                            ◇
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Construire
+                                            </strong>
+
+                                            <span>
+                                                Développer des projets
+                                                de plus en plus ambitieux.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="journey-info-item">
+
+                                        <div class="journey-info-icon">
+                                            ✧
+                                        </div>
+
+                                        <div>
+                                            <strong>
+                                                Progresser
+                                            </strong>
+
+                                            <span>
+                                                Apprendre de mes erreurs
+                                                et améliorer ma pratique.
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    id="journey-flip-back"
+                                    class="journey-flip-button"
+                                >
+                                    ← Retour
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             COMPÉTENCES
+             ================================================= -->
+
+        <section class="section about-skills-section">
+
+            <div class="section-heading">
+
+                <p class="section-eyebrow">
+                    Mon arsenal
+                </p>
+
+                <h2 class="section-title">
+                    Compétences
+                </h2>
+
+                <p class="section-description">
+                    Les technologies et domaines que j'utilise ou que
+                    j'explore actuellement.
+                </p>
+
+            </div>
+
+
+            <div
+                class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
+
+
+                <!-- Programmation -->
+
+                <article
+                    class="fantasy-card rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 shadow-md dark:border-pierre-700 dark:bg-pierre-900"
+                >
+
+                    <div
+                        class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-100 text-2xl dark:bg-accent-950"
+                    >
+                        ⚔️
+                    </div>
+
+                    <h3 class="text-xl font-bold">
+                        Programmation
+                    </h3>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+
+                        <span class="tag tag-sauge">
+                            Python
+                        </span>
+
+                        <span class="tag tag-sauge">
+                            C
+                        </span>
+
+                        <span class="tag tag-sauge">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Web -->
+
+                <article
+                    class="fantasy-card rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 shadow-md dark:border-pierre-700 dark:bg-pierre-900"
+                >
+
+                    <div
+                        class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-100 text-2xl dark:bg-accent-950"
+                    >
+                        🏰
+                    </div>
+
+                    <h3 class="text-xl font-bold">
+                        Développement web
+                    </h3>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+
+                        <span class="tag tag-sauge">
+                            HTML
+                        </span>
+
+                        <span class="tag tag-sauge">
+                            CSS
+                        </span>
+
+                        <span class="tag tag-sauge">
+                            Tailwind CSS
+                        </span>
+
+                        <span class="tag tag-sauge">
+                            JavaScript
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Outils -->
+
+                <article
+                    class="fantasy-card rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 shadow-md dark:border-pierre-700 dark:bg-pierre-900"
+                >
+
+                    <div
+                        class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-100 text-2xl dark:bg-accent-950"
+                    >
+                        🛠️
+                    </div>
+
+                    <h3 class="text-xl font-bold">
+                        Outils
+                    </h3>
+
+                    <div class="mt-4 flex flex-wrap gap-2">
+
+                        <span class="tag tag-pierre">
+                            Git
+                        </span>
+
+                        <span class="tag tag-pierre">
+                            GitHub
+                        </span>
+
+                        <span class="tag tag-pierre">
+                            VS Code
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CENTRES D'INTÉRÊT
+             ================================================= -->
+
+        <section
+            class="section about-interests-section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-eyebrow">
+                    Hors du code
+                </p>
+
+                <h2 class="section-title">
+                    Mes centres d'intérêt
+                </h2>
+
+                <p class="section-description">
+                    Quelques univers et activités qui m'inspirent
+                    au quotidien.
+                </p>
+
+            </div>
+
+
+            <div
+                id="interests-grid"
+                class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            >
+
+                <!--
+                    Les cartes sont générées par about.js
+                -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             MODALE CENTRE D'INTÉRÊT
+             ================================================= -->
+
+        <div
+            id="interest-modal"
+            class="fixed inset-0 z-[100] hidden items-center justify-center bg-cuir-950/70 px-6 backdrop-blur-sm"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+        >
+
+            <div
+                class="relative w-full max-w-lg rounded-2xl border border-cuir-300 bg-parchemin-100 p-8 shadow-2xl dark:border-pierre-700 dark:bg-pierre-900"
+            >
+
+                <!-- Fermeture -->
+
+                <button
+                    id="close-modal"
+                    type="button"
+                    class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full text-xl text-cuir-600 transition hover:bg-parchemin-200 hover:text-accent-600 dark:text-parchemin-300 dark:hover:bg-pierre-800"
+                    aria-label="Fermer"
+                >
+                    ×
+                </button>
+
+
+                <!-- Icône -->
+
+                <div
+                    id="modal-icon"
+                    class="mb-5 text-4xl"
+                ></div>
+
+
+                <!-- Titre -->
+
+                <h3
+                    id="modal-title"
+                    class="text-2xl font-bold"
+                ></h3>
+
+
+                <!-- Description -->
+
+                <p
+                    id="modal-description"
+                    class="mt-4 leading-relaxed text-cuir-600 dark:text-parchemin-300"
+                ></p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
+
+        <footer
+            class="border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950"
+        >
+
+            <div
+                class="mx-auto max-w-7xl px-6 py-8"
+            >
+
+                <div
+                    class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left"
+                >
+
+                    <p
+                        class="text-sm text-parchemin-600 dark:text-parchemin-400"
+                    >
+                        © 2026 Chhoeum Brandon — Contact
+                    </p>
+
+                    <a
+                        href="../../index.html"
+                        class="arrow-link"
+                    >
+                        Retour à l'accueil
+
+                        <span class="arrow">
+                            →
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="../js/main.js"></script>
+    <script src="../js/about.js"></script>
+
+</body>
+</html>

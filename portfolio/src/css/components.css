@@ -1,0 +1,757 @@
+/* =========================================================
+   COMPOSANTS COMMUNS DU PORTFOLIO
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   BOUTONS
+   --------------------------------------------------------- */
+
+.btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-semibold transition-all duration-300;
+}
+
+.btn-primary {
+    @apply border border-accent-600 bg-accent-600 text-parchemin-50 shadow-md;
+}
+
+.btn-primary:hover {
+    @apply -translate-y-0.5 bg-accent-700 shadow-lg;
+}
+
+.btn-secondary {
+    @apply border border-parchemin-100/60 bg-pierre-950/30 text-parchemin-50 backdrop-blur-sm;
+}
+
+.btn-secondary:hover {
+    @apply -translate-y-0.5 bg-parchemin-50/10;
+}
+
+
+/* ---------------------------------------------------------
+   BADGES / ÉTIQUETTES
+   --------------------------------------------------------- */
+
+.badge {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold;
+}
+
+.badge-accent {
+    @apply border border-accent-300 bg-accent-50 text-accent-800;
+}
+
+.dark .badge-accent {
+    @apply border-accent-700 bg-accent-950/40 text-accent-200;
+}
+
+.tag {
+    @apply rounded-full border px-3 py-1 text-xs font-medium;
+}
+
+.tag-sauge {
+    @apply border-sauge-300 bg-sauge-50 text-sauge-800;
+}
+
+.dark .tag-sauge {
+    @apply border-sauge-700 bg-sauge-950/40 text-sauge-200;
+}
+
+.tag-pierre {
+    @apply border-pierre-300 bg-pierre-50 text-pierre-700;
+}
+
+.dark .tag-pierre {
+    @apply border-pierre-700 bg-pierre-900 text-pierre-200;
+}
+
+
+/* ---------------------------------------------------------
+   CARTES
+   --------------------------------------------------------- */
+
+.fantasy-card {
+    @apply transition-all duration-300;
+}
+
+.fantasy-card:hover {
+    @apply -translate-y-1.5;
+}
+
+.project-card {
+    @apply overflow-hidden rounded-2xl border border-cuir-300 bg-parchemin-100 text-cuir-900 shadow-md;
+}
+
+.project-card:hover {
+    @apply border-accent-400 shadow-xl;
+}
+
+.dark .project-card {
+    @apply border-pierre-700 bg-pierre-900 text-parchemin-100 shadow-black/30;
+}
+
+.dark .project-card:hover {
+    @apply border-accent-600;
+}
+
+
+/* =========================================================
+   NAVIGATION COMMUNE
+   ========================================================= */
+
+.site-nav {
+    @apply fixed left-0 right-0 top-0 z-50 border-b border-cuir-700 bg-cuir-900/95 backdrop-blur-md;
+}
+
+.dark .site-nav {
+    @apply border-pierre-800 bg-pierre-950/95;
+}
+
+.nav-link {
+    @apply relative font-semibold text-parchemin-100 transition-colors duration-300;
+}
+
+.nav-link:hover {
+    @apply text-accent-300;
+}
+
+.dark .nav-link {
+    @apply text-parchemin-200;
+}
+
+.dark .nav-link:hover {
+    @apply text-accent-400;
+}
+
+.nav-link-active {
+    @apply text-accent-300;
+}
+
+.dark .nav-link-active {
+    @apply text-accent-400;
+}   NAVIGATION
+   --------------------------------------------------------- */
+
+.site-nav {
+    @apply fixed left-0 right-0 top-0 z-50 border-b border-cuir-700 bg-cuir-900/95 backdrop-blur-md;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+main {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.dark .site-nav {
+    @apply border-pierre-800 bg-pierre-950/95;
+}
+
+.nav-link {
+    @apply relative font-semibold text-parchemin-100 transition-colors duration-300;
+}
+
+.nav-link:hover {
+    @apply text-accent-300;
+}
+
+.dark .nav-link {
+    @apply text-parchemin-200;
+}
+
+.dark .nav-link:hover {
+    @apply text-accent-400;
+}
+
+.nav-link-active {
+    @apply text-accent-600;
+}
+
+.dark .nav-link-active {
+    @apply text-accent-400;
+}
+
+
+/* ---------------------------------------------------------
+   SECTIONS
+   --------------------------------------------------------- */
+
+.section {
+    @apply mx-auto max-w-7xl px-6 py-20 md:py-24;
+}
+
+.section-parchment {
+    @apply bg-parchemin-100;
+}
+
+.dark .section-parchment {
+    @apply bg-pierre-950;
+}
+
+.section-sauge {
+    @apply bg-sauge-50;
+}
+
+.dark .section-sauge {
+    @apply bg-pierre-900;
+}
+
+
+/* ---------------------------------------------------------
+   TITRES DE SECTIONS
+   --------------------------------------------------------- */
+
+.section-heading {
+    @apply mb-12 text-center;
+}
+
+.section-eyebrow {
+    @apply mb-3 text-sm font-bold uppercase tracking-[0.2em] text-accent-600;
+}
+
+.dark .section-eyebrow {
+    @apply text-accent-400;
+}
+
+.section-title {
+    @apply text-3xl font-bold text-cuir-900 md:text-4xl;
+}
+
+.dark .section-title {
+    @apply text-parchemin-100;
+}
+
+.section-description {
+    @apply mx-auto mt-4 max-w-2xl leading-relaxed text-cuir-600;
+}
+
+.dark .section-description {
+    @apply text-parchemin-300;
+}
+
+
+/* ---------------------------------------------------------
+   LIENS AVEC FLÈCHE
+   --------------------------------------------------------- */
+
+.arrow-link {
+    @apply inline-flex items-center gap-2 font-semibold text-accent-700 transition-all duration-300;
+}
+
+.arrow-link:hover {
+    @apply text-accent-500;
+}
+
+.arrow {
+    @apply transition-transform duration-300;
+}
+
+.arrow-link:hover .arrow {
+    @apply translate-x-1;
+}
+
+.dark .arrow-link {
+    @apply text-accent-400;
+}
+
+
+/* ---------------------------------------------------------
+   ANIMATIONS
+   --------------------------------------------------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.float {
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.rotate-slow {
+    animation: rotation 15s linear infinite;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.progress-bar {
+    transition: width 1.5s ease;
+}
+
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* =========================================================
+   CARTES MAGIQUES
+   ========================================================= */
+
+.project-magic-card {
+    position: relative;
+
+    min-height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    border-radius: 1rem;
+
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.project-magic-card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   LUEUR CENTRALE
+   ========================================================= */
+
+.magic-glow {
+    position: absolute;
+    inset: 15%;
+
+    border-radius: 999px;
+
+    filter: blur(35px);
+
+    opacity: 0.35;
+
+    animation: magic-pulse 4s ease-in-out infinite;
+}
+
+@keyframes magic-pulse {
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.45;
+    }
+}
+
+
+/* =========================================================
+   CERCLES MAGIQUES
+   ========================================================= */
+
+.magic-orbit {
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid currentColor;
+
+    opacity: 0.25;
+
+    pointer-events: none;
+}
+
+.magic-orbit-outer {
+    width: 230px;
+    height: 230px;
+
+    animation: magic-rotate 18s linear infinite;
+}
+
+.magic-orbit-inner {
+    width: 155px;
+    height: 155px;
+
+    border-style: dashed;
+
+    animation: magic-rotate-reverse 12s linear infinite;
+}
+
+@keyframes magic-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes magic-rotate-reverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   RUNE CENTRALE
+   ========================================================= */
+
+.magic-rune {
+    position: absolute;
+
+    z-index: 2;
+
+    font-size: 3rem;
+
+    opacity: 0.75;
+
+    animation:
+        magic-float 4s ease-in-out infinite,
+        magic-glow-text 3s ease-in-out infinite;
+}
+
+@keyframes magic-float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(8deg);
+    }
+}
+
+@keyframes magic-glow-text {
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PARTICULES
+   ========================================================= */
+
+.magic-particles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.magic-particles span {
+    position: absolute;
+
+    font-size: 0.9rem;
+
+    opacity: 0.5;
+
+    animation:
+        magic-particle 5s ease-in-out infinite;
+}
+
+.magic-particles span:nth-child(1) {
+    top: 20%;
+    left: 20%;
+}
+
+.magic-particles span:nth-child(2) {
+    top: 30%;
+    right: 18%;
+
+    animation-delay: 1s;
+}
+
+.magic-particles span:nth-child(3) {
+    bottom: 22%;
+    left: 25%;
+
+    animation-delay: 2s;
+}
+
+.magic-particles span:nth-child(4) {
+    bottom: 30%;
+    right: 25%;
+
+    animation-delay: 0.5s;
+}
+
+.magic-particles span:nth-child(5) {
+    top: 15%;
+    left: 50%;
+
+    animation-delay: 1.5s;
+}
+
+.magic-particles span:nth-child(6) {
+    right: 50%;
+    bottom: 15%;
+
+    animation-delay: 2.5s;
+}
+
+@keyframes magic-particle {
+    0%,
+    100% {
+        transform: translateY(8px);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(-12px);
+        opacity: 0.8;
+    }
+}
+
+
+/* =========================================================
+   CONTENU
+   ========================================================= */
+
+.magic-card-content {
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    text-align: center;
+}
+
+.magic-card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+
+    opacity: 0.65;
+}
+
+.magic-card-content strong {
+    font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   THÈME BRAISE
+   CV INTERACTIF
+   ========================================================= */
+
+.magic-theme-ember {
+    color: #ffd7c8;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(237, 128, 89, 0.3),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #4a241b,
+            #7b3d2b 50%,
+            #291512
+        );
+
+    box-shadow:
+        inset 0 0 50px rgba(237, 128, 89, 0.08);
+}
+
+.magic-theme-ember .magic-glow {
+    background: #ed8059;
+}
+
+
+/* =========================================================
+   THÈME ARCANE
+   PARCOURS PYTHON
+   ========================================================= */
+
+.magic-theme-arcane {
+    color: #ddd4ff;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120, 100, 220, 0.35),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #211b3a,
+            #40316b 50%,
+            #151225
+        );
+
+    box-shadow:
+        inset 0 0 50px rgba(120, 100, 220, 0.08);
+}
+
+.magic-theme-arcane .magic-glow {
+    background: #8b7bd8;
+}
+
+
+/* =========================================================
+   THÈME FORÊT
+   RÔLE & FAIRIES
+   ========================================================= */
+
+.magic-theme-sage {
+    color: #d9ebd2;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(112, 143, 103, 0.35),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #263324,
+            #475c41 50%,
+            #182019
+        );
+
+    box-shadow:
+        inset 0 0 50px rgba(112, 143, 103, 0.08);
+}
+
+.magic-theme-sage .magic-glow {
+    background: #8ba982;
+}
+
+
+/* =========================================================
+   THÈME PARCHEMIN
+   PORTFOLIO
+   ========================================================= */
+
+.magic-theme-parchment {
+    color: #fff1c9;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(203, 185, 150, 0.3),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #4d402d,
+            #806b4e 50%,
+            #292319
+        );
+
+    box-shadow:
+        inset 0 0 50px rgba(203, 185, 150, 0.08);
+}
+
+.magic-theme-parchment .magic-glow {
+    background: #d9ccb0;
+}
+
+
+/* =========================================================
+   MODE SOMBRE
+   ========================================================= */
+
+.dark .project-magic-card {
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.2),
+        0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.dark .project-magic-card:hover {
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.2),
+        0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .project-magic-card,
+    .magic-glow,
+    .magic-orbit,
+    .magic-rune,
+    .magic-particles span {
+        animation: none;
+        transition: none;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+    .project-magic-card {
+        min-height: 240px;
+    }
+
+    .magic-orbit-outer {
+        width: 190px;
+        height: 190px;
+    }
+
+    .magic-orbit-inner {
+        width: 130px;
+        height: 130px;
+    }
+
+    .magic-card-content strong {
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,1689 @@
+/* =========================================================
+   PAGE ABOUT — PARCOURS
+   ========================================================= */
+/* =========================================================
+   THÈME GLOBAL — PAGE À PROPOS
+   ========================================================= */
+
+.about-page {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(112, 143, 103, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(237, 128, 89, 0.05),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(203, 185, 150, 0.04),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #211b17 0%,
+            #171411 45%,
+            #201a16 100%
+        );
+
+    color: #f3ede2;
+}
+
+/* Particules magiques sur toute la page */
+.about-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(217, 204, 176, 0.55) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(168, 192, 159, 0.35) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(237, 128, 89, 0.25) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        120px 120px,
+        190px 190px,
+        260px 260px;
+
+    background-position:
+        10px 20px,
+        80px 50px,
+        140px 100px;
+
+    opacity: 0.4;
+
+    animation: about-page-particles 25s linear infinite;
+}
+
+@keyframes about-page-particles {
+    0% {
+        background-position:
+            10px 20px,
+            80px 50px,
+            140px 100px;
+    }
+
+    50% {
+        background-position:
+            30px -20px,
+            40px 20px,
+            170px 60px;
+    }
+
+    100% {
+        background-position:
+            10px 20px,
+            80px 50px,
+            140px 100px;
+    }
+}
+
+/* Halo magique global */
+.about-page::after {
+    content: "";
+    position: fixed;
+    top: 45%;
+    left: 50%;
+
+    width: 700px;
+    height: 700px;
+
+    z-index: 0;
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 143, 103, 0.08),
+            rgba(112, 143, 103, 0.025) 40%,
+            transparent 70%
+        );
+
+    transform: translate(-50%, -50%);
+    filter: blur(12px);
+}
+
+/* Le contenu passe au-dessus des particules */
+.about-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   COMPÉTENCES & CENTRES D'INTÉRÊT
+   ========================================================= */
+
+.about-skills-section,
+.about-interests-section {
+    position: relative;
+    background: transparent;
+    color: #f3ede2;
+}
+
+/* Titres */
+
+.about-skills-section .section-title,
+.about-interests-section .section-title {
+    color: #f5f1e7;
+}
+
+.about-skills-section .section-description,
+.about-interests-section .section-description {
+    color: #f5f1e7;
+}
+
+.about-skills-section .section-eyebrow,
+.about-interests-section .section-eyebrow {
+    color: #ed8059;
+}
+
+.about-interests-section .fantasy-card {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(52, 62, 47, 0.9),
+            rgba(27, 31, 25, 0.96)
+        );
+
+    border-color: rgba(168, 192, 159, 0.2);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(112, 143, 103, 0.025);
+}
+
+.about-interests-section .fantasy-card::before {
+    content: "✦";
+
+    position: absolute;
+    top: 14px;
+    right: 18px;
+
+    color: rgba(168, 192, 159, 0.25);
+    font-size: 14px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.about-interests-section .fantasy-card:hover::before {
+    color: rgba(237, 128, 89, 0.7);
+    transform: rotate(20deg) scale(1.2);
+}
+
+/* =========================================================
+   CARTES COMPÉTENCES
+   ========================================================= */
+
+.about-skills-section .fantasy-card {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(203, 185, 150, 0.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(62, 52, 43, 0.88),
+            rgba(29, 25, 21, 0.94)
+        );
+
+    color: #f3ede2;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(6px);
+}
+
+.about-skills-section .fantasy-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(237, 128, 89, 0.45);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(237, 128, 89, 0.08);
+}
+
+.about-skills-section .fantasy-card h3 {
+    color: #f5f1e7;
+}
+
+.about-skills-section .fantasy-card p {
+    color: #bdb5a8;
+}
+
+
+/* =========================================================
+   CARTES CENTRES D'INTÉRÊT
+   ========================================================= */
+
+.about-interests-section .fantasy-card {
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid rgba(168, 192, 159, 0.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(48, 57, 44, 0.88),
+            rgba(27, 31, 25, 0.95)
+        );
+
+    color: #f3ede2;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+    backdrop-filter: blur(6px);
+}
+
+.about-interests-section .fantasy-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(168, 192, 159, 0.45);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(112, 143, 103, 0.1);
+}
+
+.about-interests-section .fantasy-card h3 {
+    color: #f5f1e7;
+}
+
+.about-interests-section .fantasy-card p {
+    color: #bdb5a8;
+}
+
+
+/* Icônes des centres d'intérêt */
+
+.about-interests-section .fantasy-card > div:first-child {
+    background: rgba(112, 143, 103, 0.15);
+    border: 1px solid rgba(168, 192, 159, 0.18);
+}
+
+
+/* Lien "En savoir plus" */
+
+.about-interests-section .fantasy-card span {
+    color: #ed8059;
+}
+
+/* =========================================================
+   BLOC TIMELINE
+   ========================================================= */
+
+.about-timeline-block {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.about-timeline {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+
+/* ---------------------------------------------------------
+   LIGNE CENTRALE
+   --------------------------------------------------------- */
+
+.timeline-line,
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 4px;
+
+    border-radius: 999px;
+
+    transform: translateX(-50%);
+}
+
+.timeline-line {
+    height: 100%;
+    background: #e5dbc5;
+}
+
+.dark .timeline-line {
+    background: #4d4d49;
+}
+
+.timeline-progress {
+    z-index: 2;
+
+    height: 0;
+
+    background: #ed8059;
+
+    transition: height 0.2s ease-out;
+}
+
+
+/* ---------------------------------------------------------
+   ÉLÉMENTS DE LA TIMELINE
+   --------------------------------------------------------- */
+
+.timeline-item {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 180px;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ---------------------------------------------------------
+   CARTES DE LA TIMELINE
+   --------------------------------------------------------- */
+
+.timeline-content {
+    position: relative;
+    z-index: 3;
+
+    width: calc(50% - 60px);
+
+    padding: 1.5rem;
+
+    border: 1px solid #dbc9be;
+    border-radius: 1rem;
+
+    background: #faf9f4;
+    color: #49332b;
+
+    box-shadow:
+        0 8px 20px rgba(68, 58, 44, 0.08);
+}
+
+.dark .timeline-content {
+    border-color: #5b5b56;
+    background: #41413e;
+    color: #fdfcf8;
+}
+
+
+/* ---------------------------------------------------------
+   ALTERNANCE GAUCHE / DROITE
+   --------------------------------------------------------- */
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: auto;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: auto;
+}
+
+
+/* ---------------------------------------------------------
+   POINT CENTRAL
+   --------------------------------------------------------- */
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+    z-index: 5;
+
+    top: 1.5rem;
+    left: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    border: 3px solid #ed8059;
+    border-radius: 50%;
+
+    background: #f5f1e7;
+
+    transform: translateX(-50%);
+
+    box-shadow:
+        0 0 0 4px rgba(237, 128, 89, 0.12);
+}
+
+.dark .timeline-item::before {
+    background: #292927;
+}
+
+
+/* ---------------------------------------------------------
+   TEXTE TIMELINE
+   --------------------------------------------------------- */
+
+.timeline-label {
+    display: block;
+
+    margin-bottom: 0.5rem;
+
+    color: #dc6742;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+}
+
+.timeline-content h3 {
+    margin: 0;
+
+    color: #49332b;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.dark .timeline-content h3 {
+    color: #fdfcf8;
+}
+
+.timeline-content p {
+    margin-top: 0.75rem;
+
+    color: #707069;
+
+    line-height: 1.7;
+}
+
+.dark .timeline-content p {
+    color: #d6d6d0;
+}
+
+
+/* =========================================================
+   BLOC CARTE MAGIQUE
+   ========================================================= */
+
+.about-journey-card-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    padding: 4rem 0 4rem;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENEUR DE LA CARTE
+   --------------------------------------------------------- */
+
+.journey-card-wrapper {
+    position: relative;
+
+    width: 420px;
+    max-width: 100%;
+
+    height: 520px;
+
+    margin: 0 auto;
+
+    perspective: 1200px;
+}
+
+
+/* ---------------------------------------------------------
+   CARTE
+   --------------------------------------------------------- */
+
+.journey-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.9s cubic-bezier(
+            0.22,
+            0.61,
+            0.36,
+            1
+        );
+}
+
+.journey-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================================
+   FACES DE LA CARTE
+   ========================================================= */
+
+.journey-card-face {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(203, 185, 150, 0.45);
+
+    border-radius: 1.25rem;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(68, 58, 44, 0.2),
+        inset 0 0 50px rgba(255, 255, 255, 0.04);
+}
+
+
+/* ---------------------------------------------------------
+   FACE AVANT
+   --------------------------------------------------------- */
+
+.journey-card-front {
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(112, 143, 103, 0.3),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(237, 128, 89, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #263324,
+            #475c41 50%,
+            #1b2419
+        );
+
+    color: #f3f7f1;
+}
+
+
+/* ---------------------------------------------------------
+   FACE ARRIÈRE
+   --------------------------------------------------------- */
+
+.journey-card-back {
+    transform: rotateY(180deg);
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(203, 185, 150, 0.25),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #443a2c,
+            #5d4c37 50%,
+            #292319
+        );
+
+    color: #fdfcf8;
+}
+
+
+/* =========================================================
+   GLOW MAGIQUE
+   ========================================================= */
+
+.journey-card-glow {
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background: rgba(168, 192, 159, 0.18);
+
+    filter: blur(45px);
+
+    animation:
+        journey-glow 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes journey-glow {
+    0%,
+    100% {
+        transform: scale(0.85);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.65;
+    }
+}
+
+
+/* =========================================================
+   RUNE
+   ========================================================= */
+
+.journey-rune {
+    position: absolute;
+
+    top: 70px;
+    left: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90px;
+    height: 90px;
+
+    border: 1px solid rgba(217, 204, 176, 0.35);
+
+    border-radius: 50%;
+
+    color: #d9ccb0;
+
+    font-size: 2.5rem;
+
+    transform: translateX(-50%);
+
+    box-shadow:
+        0 0 25px rgba(203, 185, 150, 0.15),
+        inset 0 0 20px rgba(203, 185, 150, 0.08);
+
+    animation:
+        journey-rune 6s ease-in-out infinite;
+}
+
+@keyframes journey-rune {
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            rotate(8deg);
+    }
+}
+
+
+/* =========================================================
+   PARTICULES
+   ========================================================= */
+
+.journey-card-stars {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.journey-card-stars span {
+    position: absolute;
+
+    color: rgba(217, 204, 176, 0.7);
+
+    font-size: 0.8rem;
+
+    animation:
+        journey-particle 5s ease-in-out infinite;
+}
+
+.journey-card-stars span:nth-child(1) {
+    top: 15%;
+    left: 15%;
+}
+
+.journey-card-stars span:nth-child(2) {
+    top: 25%;
+    right: 14%;
+
+    animation-delay: 1s;
+}
+
+.journey-card-stars span:nth-child(3) {
+    bottom: 20%;
+    left: 18%;
+
+    animation-delay: 2s;
+}
+
+.journey-card-stars span:nth-child(4) {
+    right: 20%;
+    bottom: 25%;
+
+    animation-delay: 0.5s;
+}
+
+.journey-card-stars span:nth-child(5) {
+    top: 50%;
+    right: 8%;
+
+    animation-delay: 1.5s;
+}
+
+@keyframes journey-particle {
+    0%,
+    100% {
+        transform: translateY(6px);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: translateY(-10px);
+        opacity: 0.8;
+    }
+}
+
+
+/* =========================================================
+   CONTENU DE LA CARTE
+   ========================================================= */
+
+.journey-card-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    padding: 7rem 3rem 3rem;
+
+    text-align: center;
+}
+
+.journey-card-back .journey-card-content {
+    padding-top: 2rem;
+}
+
+
+/* ---------------------------------------------------------
+   PETIT TITRE
+   --------------------------------------------------------- */
+
+.journey-card-eyebrow {
+    display: block;
+
+    margin-bottom: 0.75rem;
+
+    color: #a8c09f;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.2em;
+}
+
+.journey-card-back .journey-card-eyebrow {
+    color: #d9ccb0;
+}
+
+
+/* ---------------------------------------------------------
+   TITRE
+   --------------------------------------------------------- */
+
+.journey-card-content h3 {
+    margin: 0;
+
+    color: #fdfcf8;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   DESCRIPTION
+   --------------------------------------------------------- */
+
+.journey-card-content p {
+    max-width: 380px;
+
+    margin: 1.25rem auto 0;
+
+    color: rgba(243, 247, 241, 0.78);
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   BOUTON DE RETOURNEMENT
+   ========================================================= */
+
+.journey-flip-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.6rem;
+
+    margin-top: 2rem;
+    padding: 0.7rem 1.2rem;
+
+    border: 1px solid rgba(217, 204, 176, 0.4);
+
+    border-radius: 0.7rem;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    color: #fdfcf8;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.journey-flip-button:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(217, 204, 176, 0.75);
+}
+
+
+/* =========================================================
+   INFORMATIONS FACE ARRIÈRE
+   ========================================================= */
+
+.journey-info-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.55rem;
+
+    margin-top: 1.25rem;
+
+    text-align: left;
+}
+
+.journey-info-item {
+    display: flex;
+    align-items: center;
+
+    gap: 0.8rem;
+
+    padding: 0.55rem 0.7rem;
+
+    border: 1px solid rgba(217, 204, 176, 0.15);
+
+    border-radius: 0.65rem;
+
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.journey-info-icon {
+    display: flex;
+    flex-shrink: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 0.5rem;
+
+    background: rgba(217, 204, 176, 0.08);
+}
+
+.journey-info-item div {
+    display: flex;
+
+    min-width: 0;
+
+    flex-direction: column;
+}
+
+.journey-info-item strong {
+    color: #fdfcf8;
+
+    font-size: 0.8rem;
+}
+
+.journey-info-item div span {
+    color: rgba(243, 247, 241, 0.68);
+
+    font-size: 0.7rem;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media (max-width: 1023px) {
+    .about-timeline {
+        max-width: 800px;
+    }
+
+    .journey-card-wrapper {
+        width: 420px;
+        max-width: 90%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+    /* -------------------------
+       TIMELINE
+       ------------------------- */
+
+    .about-timeline-block {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .about-timeline {
+        padding-left: 2rem;
+        padding-right: 0;
+    }
+
+    .timeline-line,
+    .timeline-progress {
+        left: 0.5rem;
+    }
+
+    .timeline-item {
+        display: block;
+
+        min-height: auto;
+
+        margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+        left: 0.5rem;
+    }
+
+    .timeline-content,
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: 100%;
+
+        margin: 0;
+    }
+
+
+    /* -------------------------
+       CARTE
+       ------------------------- */
+
+    .about-journey-card-block {
+        padding-top: 2rem;
+    }
+
+    .journey-card-wrapper {
+        width: 100%;
+        max-width: 420px;
+
+        height: 560px;
+    }
+
+    .journey-card {
+        height: 560px;
+    }
+
+    .journey-card-content {
+        padding: 7rem 1.5rem 2rem;
+    }
+
+    .journey-card-back .journey-card-content {
+        padding: 2rem 1.25rem;
+    }
+
+    .journey-card-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .journey-info-list {
+        gap: 0.5rem;
+    }
+
+    .journey-info-item {
+        padding: 0.5rem;
+    }
+}
+
+
+/* =========================================================
+   RÉDUCTION DES ANIMATIONS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .timeline-item,
+    .journey-card {
+        transition: none;
+    }
+
+    .journey-card-glow,
+    .journey-rune,
+    .journey-card-stars span {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   FOND MAGIQUE — SECTION PARCOURS
+   ========================================================= */
+
+.about-parcours-section {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(112, 143, 103, 0.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(237, 128, 89, 0.05),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(203, 185, 150, 0.04),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #211b17 0%,
+            #171411 45%,
+            #201a16 100%
+        );
+
+    color: #f3ede2;
+}
+
+/* Empêche le contenu de passer derrière les particules */
+
+.about-parcours-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   PARTICULES DU FOND
+   ========================================================= */
+
+.about-parcours-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(217, 204, 176, 0.55) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(168, 192, 159, 0.35) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle,
+            rgba(237, 128, 89, 0.25) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        120px 120px,
+        190px 190px,
+        260px 260px;
+
+    background-position:
+        10px 20px,
+        80px 50px,
+        140px 100px;
+
+    opacity: 0.45;
+
+    animation:
+        magical-particles 25s linear infinite;
+}
+
+@keyframes magical-particles {
+    0% {
+        background-position:
+            10px 20px,
+            80px 50px,
+            140px 100px;
+    }
+
+    50% {
+        background-position:
+            30px -20px,
+            40px 20px,
+            170px 60px;
+    }
+
+    100% {
+        background-position:
+            10px 20px,
+            80px 50px,
+            140px 100px;
+    }
+}
+
+
+/* =========================================================
+   BRUME / LUEUR CENTRALE
+   ========================================================= */
+
+.about-parcours-section::after {
+    content: "";
+
+    position: absolute;
+
+    top: 35%;
+    left: 50%;
+
+    width: 650px;
+    height: 650px;
+
+    z-index: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 143, 103, 0.08),
+            rgba(112, 143, 103, 0.025) 40%,
+            transparent 70%
+        );
+
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+    filter: blur(10px);
+}
+
+
+/* =========================================================
+   TITRES SUR FOND SOMBRE
+   ========================================================= */
+
+.about-parcours-section .section-title {
+    color: #f5f1e7;
+}
+
+.about-parcours-section .section-description {
+    color: #bdb5a8;
+}
+
+.about-parcours-section .section-eyebrow {
+    color: #ed8059;
+}
+
+
+/* =========================================================
+   TIMELINE — ADAPTATION AU FOND SOMBRE
+   ========================================================= */
+
+.about-parcours-section .timeline-line {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(217, 204, 176, 0.08),
+            rgba(217, 204, 176, 0.2),
+            rgba(217, 204, 176, 0.08)
+        );
+
+    box-shadow:
+        0 0 12px rgba(203, 185, 150, 0.08);
+}
+
+.about-parcours-section .timeline-progress {
+    background:
+        linear-gradient(
+            to bottom,
+            #ed8059,
+            #f3a17e,
+            #ed8059
+        );
+
+    box-shadow:
+        0 0 10px rgba(237, 128, 89, 0.35),
+        0 0 25px rgba(237, 128, 89, 0.12);
+}
+
+
+/* =========================================================
+   POINTS DE LA TIMELINE
+   ========================================================= */
+
+.about-parcours-section .timeline-item::before {
+    border-color: #ed8059;
+
+    background:
+        radial-gradient(
+            circle,
+            #f5c2aa 0%,
+            #ed8059 35%,
+            #6f3324 70%,
+            #211b17 100%
+        );
+
+    box-shadow:
+        0 0 0 4px rgba(237, 128, 89, 0.08),
+        0 0 15px rgba(237, 128, 89, 0.35);
+}
+
+
+/* =========================================================
+   CARTES DE LA TIMELINE
+   ========================================================= */
+
+.about-parcours-section .timeline-content {
+    border-color: rgba(203, 185, 150, 0.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(62, 53, 44, 0.92),
+            rgba(37, 32, 28, 0.96)
+        );
+
+    color: #f5f1e7;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 0 30px rgba(203, 185, 150, 0.025);
+
+    backdrop-filter: blur(5px);
+}
+
+.about-parcours-section .timeline-content:hover {
+    border-color: rgba(237, 128, 89, 0.4);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(237, 128, 89, 0.06);
+}
+
+.about-parcours-section .timeline-content h3 {
+    color: #fdfcf8;
+}
+
+.about-parcours-section .timeline-content p {
+    color: #bdb5a8;
+}
+
+.about-parcours-section .timeline-label {
+    color: #ed8059;
+}
+
+
+/* =========================================================
+   PETITES PARTICULES AUTOUR DE LA TIMELINE
+   ========================================================= */
+
+.about-timeline-block {
+    position: relative;
+}
+
+.about-timeline-block::before,
+.about-timeline-block::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: rgba(217, 204, 176, 0.35);
+
+    font-size: 0.8rem;
+
+    pointer-events: none;
+
+    animation:
+        floating-particle 5s ease-in-out infinite;
+}
+
+.about-timeline-block::before {
+    top: 12%;
+    left: 12%;
+}
+
+.about-timeline-block::after {
+    right: 12%;
+    bottom: 15%;
+
+    animation-delay: 2s;
+}
+
+@keyframes floating-particle {
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.25;
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            scale(1.25);
+
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================================
+   BLOC DE LA CARTE
+   ========================================================= */
+
+.about-journey-card-block {
+    position: relative;
+}
+
+
+/* Lueur derrière la carte */
+
+.about-journey-card-block::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 143, 103, 0.08),
+            transparent 65%
+        );
+
+    transform: translate(-50%, -50%);
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CARTE MAGIQUE
+   ========================================================= */
+
+.about-parcours-section .journey-card-face {
+    border-color:
+        rgba(203, 185, 150, 0.35);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(112, 143, 103, 0.08),
+        inset 0 0 50px rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================================================
+   PARTICULES SUR LA CARTE
+   ========================================================= */
+
+.about-parcours-section .journey-card-stars span {
+    text-shadow:
+        0 0 8px rgba(217, 204, 176, 0.5),
+        0 0 15px rgba(168, 192, 159, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+    .about-parcours-section::before {
+        background-size:
+            90px 90px,
+            150px 150px,
+            220px 220px;
+
+        opacity: 0.35;
+    }
+
+    .about-parcours-section::after {
+        width: 400px;
+        height: 400px;
+    }
+
+    .about-timeline-block::before {
+        left: 5%;
+    }
+
+    .about-timeline-block::after {
+        right: 5%;
+    }
+}
+
+
+/* =========================================================
+   RÉDUCTION DES ANIMATIONS
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-parcours-section::before,
+    .about-timeline-block::before,
+    .about-timeline-block::after {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   MODALE — CENTRES D'INTÉRÊT
+   ========================================================= */
+
+#interest-modal {
+    background: rgba(5, 4, 3, 0.88);
+    backdrop-filter: blur(10px);
+}
+
+
+/* Contenu de la modale */
+#interest-modal > div {
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(112, 143, 103, 0.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(237, 128, 89, 0.05),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #211c18 0%,
+            #151311 55%,
+            #0e0d0c 100%
+        );
+
+    border: 1px solid rgba(203, 185, 150, 0.18);
+
+    color: #eadfd0;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(112, 143, 103, 0.05);
+}
+
+
+/* =========================================================
+   ICÔNE
+   ========================================================= */
+
+#interest-modal #modal-icon {
+    display: inline-flex;
+    width: 3.5rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(27, 36, 25, 0.75);
+    border: 1px solid rgba(168, 192, 159, 0.30);
+    border-radius: 0.75rem;
+
+    box-shadow:
+        inset 0 0 20px rgba(112, 143, 103, 0.06),
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+#interest-modal #modal-title {
+    color: #f5f1e7;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+#interest-modal #modal-description {
+    color: #bdb5a8;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BOUTON FERMER
+   ========================================================= */
+
+#interest-modal #close-modal {
+    color: #bdb5a8;
+
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+}
+
+#interest-modal #close-modal:hover {
+    color: #ed8059;
+
+    background: rgba(237, 128, 89, 0.10);
+}
+
+
+/* =========================================================
+   SCROLL DE LA MODALE
+   ========================================================= */
+
+#interest-modal > div {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+
+/* Scrollbar */
+#interest-modal > div::-webkit-scrollbar {
+    width: 7px;
+}
+
+#interest-modal > div::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 999px;
+}
+
+#interest-modal > div::-webkit-scrollbar-thumb {
+    background: rgba(112, 143, 103, 0.45);
+    border-radius: 999px;
+}
+
+#interest-modal > div::-webkit-scrollbar-thumb:hover {
+    background: rgba(112, 143, 103, 0.70);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    #interest-modal {
+        padding: 14px;
+    }
+
+    #interest-modal > div {
+        max-height: 92vh;
+    }
+}
+
+.about-interests-section h2.section-title {
+    color: #ffffff !important;
+}

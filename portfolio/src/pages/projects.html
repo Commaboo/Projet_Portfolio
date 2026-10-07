@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+
+        <title>Projets | Brandon Chhoeum</title>
+
+        <link
+            rel="stylesheet"
+            href="../../src/css/output.css"
+        />
+
+        <link
+            rel="stylesheet"
+            href="../../src/css/projects.css"
+        />
+    </head>
+
+    <body>
+
+        <!-- =====================================================
+             NAVIGATION
+             ===================================================== -->
+
+        <nav class="site-nav">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
+                <!-- Logo -->
+                <a
+                    href="../../index.html"
+                    class="text-xl font-bold tracking-wide text-parchemin-100 transition-colors hover:text-accent-300"
+                >
+                    ✦ Mon Portfolio
+                </a>
+
+                <!-- Navigation desktop -->
+                <div id="nav-links" class="hidden items-center gap-8 md:flex">
+                    <a href="../../index.html" class="nav-link">
+                        Accueil
+                    </a>
+
+                    <a href="./about.html" class="nav-link">
+                        À propos
+                    </a>
+
+                    <a href="./wip.html" class="nav-link">
+                        Rôle &amp; Fairies
+                    </a>
+
+                    <a href="./projects.html" class="nav-link">
+                        Projets
+                    </a>
+
+                    <a href="./contact.html" class="nav-link">
+                        Contact
+                    </a>
+
+                    <button
+                        id="theme-button"
+                        type="button"
+                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 transition-all hover:border-accent-400/50 hover:bg-parchemin-50/10"
+                        aria-label="Activer le thème sombre"
+                    >
+                        🌙
+                    </button>
+                </div>
+
+                <!-- Menu mobile -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button
+                        id="theme-button"
+                        type="button"
+                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2"
+                        aria-label="Activer le thème sombre"
+                    >
+                        🌙
+                    </button>
+
+                    <button
+                        id="menu-button"
+                        type="button"
+                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 text-parchemin-100"
+                        aria-label="Ouvrir le menu"
+                    >
+                        ☰
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu mobile -->
+            <div
+                id="mobile-menu"
+                class="mobile-menu hidden flex-col gap-4 border-t border-parchemin-100/10 px-6 py-5 md:hidden"
+            >
+                <a href="../../index.html" class="nav-link">
+                    Accueil
+                </a>
+
+                <a href="./about.html" class="nav-link">
+                    À propos
+                </a>
+
+                <a href="./wip.html" class="nav-link">
+                    Rôle &amp; Fairies
+                </a>
+
+                <a href="./projects.html" class="nav-link">
+                    Projets
+                </a>
+
+                <a href="./contact.html" class="nav-link">
+                    Contact
+                </a>
+            </div>
+        </nav>
+
+
+        <main>
+
+            <!-- =====================================================
+                 HERO
+                 ===================================================== -->
+
+            <section
+                class="relative flex h-[520px] items-center overflow-hidden"
+            >
+
+                <!-- IMAGE DE FOND FLOUTÉE -->
+
+                <div
+                    class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+                    style="
+                        background-image:
+                            url('../../public/images/bg_hero_index.jpg');
+                    "
+                ></div>
+
+
+                <!-- OVERLAY -->
+
+                <div
+                    class="absolute inset-0 bg-cuir-950/60"
+                ></div>
+
+
+                <!-- CONTENU -->
+
+                <div
+                    class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24"
+                >
+                    <div class="max-w-3xl">
+
+                        <div class="mb-6">
+                            <span class="badge badge-accent">
+                                ✦ Mes aventures
+                            </span>
+                        </div>
+
+                        <h1
+                            class="text-4xl font-bold leading-tight text-parchemin-50 sm:text-5xl md:text-6xl"
+                        >
+                            Projets & réalisations.
+                        </h1>
+
+                        <p
+                            class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl"
+                        >
+                            Retrouvez les projets qui représentent
+                            mon parcours, mes apprentissages et les
+                            technologies que j'explore au fil de mes
+                            aventures.
+                        </p>
+
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 BUREAU DU MAGE
+                 ===================================================== -->
+
+            <section class="mage-workspace">
+
+                <div class="mage-desk">
+
+                    <!-- =================================================
+                         LUMIÈRE
+                         ================================================= -->
+
+                    <div
+                        class="desk-glow"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- =================================================
+                         DÉCOR
+                         ================================================= -->
+
+                    <div
+                        class="desk-object desk-candle"
+                        aria-hidden="true"
+                    >
+                        🕯️
+                    </div>
+
+                    <div
+                        class="desk-object desk-inkwell"
+                        aria-hidden="true"
+                    >
+                        🖋️
+                    </div>
+
+                    <div
+                        class="desk-object desk-hat"
+                        aria-hidden="true"
+                    >
+                        🎩
+                    </div>
+
+
+                    <!-- =================================================
+                         PARCHEMIN DU PROJET
+                         ================================================= -->
+
+                    <article
+                        id="project-scroll"
+                        class="project-scroll"
+                        aria-live="polite"
+                    >
+
+                        <div class="scroll-content">
+
+                            <!-- ================================
+                                 EN-TÊTE DU PROJET
+                                 ================================= -->
+
+                            <div class="project-header">
+
+                                <div>
+
+                                    <p
+                                        id="project-status"
+                                        class="project-status"
+                                    >
+                                        ✓ Terminé
+                                    </p>
+
+                                    <h2 id="project-title">
+                                        CV interactif
+                                    </h2>
+
+                                    <p
+                                        id="project-period"
+                                        class="project-period"
+                                    >
+                                        Septembre 2026
+                                    </p>
+
+                                </div>
+
+
+                                <span
+                                    class="project-seal"
+                                    aria-hidden="true"
+                                >
+                                    ✦
+                                </span>
+
+                            </div>
+
+
+                            <!-- =================================================
+                                 CARTE MAGIQUE
+                                 ================================================= -->
+
+                            <div class="project-preview">
+
+                                <div
+                                    id="project-image"
+                                    class="project-magic-card magic-theme-ember"
+                                    aria-hidden="true"
+                                >
+
+                                    <!-- ORBITE EXTÉRIEURE -->
+
+                                    <div
+                                        class="magic-orbit magic-orbit-outer"
+                                    ></div>
+
+
+                                    <!-- ORBITE INTÉRIEURE -->
+
+                                    <div
+                                        class="magic-orbit magic-orbit-inner"
+                                    ></div>
+
+
+                                    <!-- GLYPHE CENTRAL -->
+
+                                    <div class="magic-rune">
+                                        ✦
+                                    </div>
+
+
+                                    <!-- PARTICULES -->
+
+                                    <div
+                                        class="magic-particles"
+                                        aria-hidden="true"
+                                    >
+                                        <span>✦</span>
+                                        <span>◇</span>
+                                        <span>✧</span>
+                                        <span>·</span>
+                                        <span>✦</span>
+                                        <span>◇</span>
+                                    </div>
+
+
+                                    <!-- CONTENU -->
+
+                                    <div class="magic-card-content">
+
+                                        <span class="magic-card-label">
+                                            Projet
+                                        </span>
+
+                                        <strong
+                                            id="project-magic-title"
+                                        >
+                                            CV interactif
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- =================================================
+                                 DESCRIPTION
+                                 ================================================= -->
+
+                            <p
+                                id="project-description"
+                                class="project-description"
+                            >
+                                J'ai voulu transformer un CV classique
+                                en une expérience web plus interactive.
+                            </p>
+
+
+                            <!-- =================================================
+                                 TECHNOLOGIES
+                                 ================================================= -->
+
+                            <div
+                                id="project-technologies"
+                                class="project-tags"
+                            ></div>
+
+
+                            <!-- =================================================
+                                 ACTIONS
+                                 ================================================= -->
+
+                            <div class="project-actions">
+
+                                <button
+                                    type="button"
+                                    class="btn btn-primary project-action"
+                                    data-action="journey"
+                                >
+                                    Parcours
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary project-action"
+                                    data-action="skills"
+                                >
+                                    Compétences
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary project-action"
+                                    data-action="preview"
+                                >
+                                    Preview
+                                </button>
+
+                            </div>
+
+
+                            <!-- =================================================
+                                 DÉTAIL DU PROJET
+                                 ================================================= -->
+
+                            <div
+                                id="project-detail"
+                                class="project-detail hidden"
+                            >
+
+                                <div
+                                    class="project-detail-header"
+                                >
+
+                                    <h3 id="detail-title">
+                                        Parcours
+                                    </h3>
+
+                                    <button
+                                        id="close-detail"
+                                        type="button"
+                                        aria-label="Fermer"
+                                    >
+                                        ×
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    id="detail-content"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =================================================
+                         CHAT
+                         ================================================= -->
+
+                    <button
+                        id="github-cat"
+                        class="github-cat"
+                        type="button"
+                        aria-label="Voir le GitHub du projet"
+                    >
+                        🐈‍⬛
+                    </button>
+
+
+                    <!-- =================================================
+                         REGISTRE DES PROJETS
+                         ================================================= -->
+
+                    <aside class="project-registry">
+
+                        <button
+                            id="registry-toggle"
+                            class="registry-header"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="project-list"
+                        >
+
+                            <span>
+
+                                <span class="registry-label">
+                                    Registre
+                                </span>
+
+                                <span class="registry-subtitle">
+                                    Mes projets
+                                </span>
+
+                            </span>
+
+
+                            <span
+                                id="registry-arrow"
+                                class="registry-arrow"
+                                aria-hidden="true"
+                            >
+                                ↓
+                            </span>
+
+                        </button>
+
+
+                        <div
+                            id="project-list"
+                            class="project-list"
+                            aria-label="Liste des projets"
+                        ></div>
+
+
+                        <p
+                            id="drop-hint"
+                            class="drop-hint"
+                        >
+                            Déposez un projet sur le parchemin
+                        </p>
+
+                    </aside>
+
+
+                    <!-- =================================================
+                         MESSAGE GITHUB
+                         ================================================= -->
+
+                    <div
+                        id="github-message"
+                        class="github-message hidden"
+                        role="status"
+                    ></div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
+
+        <footer
+            class="border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950"
+        >
+
+            <div
+                class="mx-auto max-w-7xl px-6 py-8"
+            >
+
+                <div
+                    class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left"
+                >
+
+                    <p
+                        class="text-sm text-cuir-600 dark:text-parchemin-400"
+                    >
+                        © 2026 Chhoeum Brandon — Contact
+                    </p>
+
+                    <a
+                        href="../../index.html"
+                        class="arrow-link"
+                    >
+                        Retour à l'accueil
+
+                        <span class="arrow">
+                            →
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <!-- =====================================================
+             JAVASCRIPT
+             ===================================================== -->
+
+        <script src="../js/main.js"></script>
+        <script src="../js/projects.js"></script>
+
+    </body>
+</html>
