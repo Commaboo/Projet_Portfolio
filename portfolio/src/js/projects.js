@@ -14,6 +14,7 @@ const projects = [
         description:
             "J'ai voulu transformer un CV classique en une expérience web plus interactive. J'ai travaillé sur sa structure, son apparence et différentes interactions pour rendre la présentation plus dynamique.",
         image: null,
+        previewUrl: "../projet/resume/resume.html",
         technologies: [
             "HTML",
             "CSS",
@@ -271,26 +272,40 @@ function renderTechnologies(project) {
 /* IMAGE */
 
 function renderProjectImage(project) {
-    if (project.image) {
-        projectImage.innerHTML = `
-            <img
-                src="${project.image}"
-                alt="Aperçu de ${project.title}"
-                class="h-full w-full rounded-lg object-cover"
-            />
-        `;
+    if (!projectImage) return;
 
-        projectImage.classList.remove(
-            "project-image-placeholder"
-        );
-    } else {
+    const showPlaceholder = () => {
         projectImage.innerHTML = `
-            <span>Image du projet</span>
-            <small>Placeholder</small>
+            <div class="fantasy-card project-image-placeholder">
+                <span class="placeholder-icon" aria-hidden="true">✦</span>
+                <h3 class="placeholder-title">Aperçu indisponible</h3>
+                <p class="placeholder-description">
+                    L'illustration de cette aventure sera bientôt dévoilée.
+                </p>
+            </div>
         `;
+    };
 
-        projectImage.className =
-            "project-image-placeholder";
+    if (!project.image) {
+        showPlaceholder();
+        return;
+    }
+
+    projectImage.innerHTML = `
+        <img
+            src="${project.image}"
+            alt="Aperçu du projet ${project.title}"
+            class="project-preview-image"
+        />
+    `;
+
+    const image = projectImage.querySelector("img");
+
+    image.addEventListener("error", showPlaceholder);
+
+    // Gère également le cas où l'image a déjà échoué à se charger.
+    if (image.complete && image.naturalWidth === 0) {
+        showPlaceholder();
     }
 }
 
@@ -369,6 +384,11 @@ function openProjectDetail(type) {
     }
 
     if (type === "preview") {
+        if (project.previewUrl) {
+            window.location.href = project.previewUrl;
+            return;
+        }
+
         detailTitle.textContent = "Preview";
 
         if (project.image) {
