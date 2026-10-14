@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # À adapter avec l'adresse réelle du site une fois déployé
-Sitemap: https://commaboo.github.io/portfolio/sitemap.xml
+Sitemap: https://commaboo.github.io/Projet_Portfolio/sitemap.xml
