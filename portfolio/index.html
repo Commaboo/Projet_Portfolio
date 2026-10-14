@@ -1,241 +1,123 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
+        <title>Brandon Chhoeum — Portfolio d'un étudiant développeur web</title>
+        <meta name="description" content="Portfolio de Brandon Chhoeum, étudiant en informatique à EPITECH Toulouse : projets web, parcours d'apprentissage et contact, dans un univers fantasy." />
+        <meta name="author" content="Brandon Chhoeum" />
+        <meta name="theme-color" content="#49332b" />
 
-        <meta
-            name="description"
-            content="Portfolio de Brandon, étudiant en informatique et développeur web."
-        />
+        <!-- Aperçu lors d'un partage (Open Graph) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="Brandon Chhoeum — Portfolio" />
+        <meta property="og:title" content="Brandon Chhoeum — Portfolio d'un étudiant développeur web" />
+        <meta property="og:description" content="Portfolio de Brandon Chhoeum, étudiant en informatique à EPITECH Toulouse : projets web, parcours d'apprentissage et contact, dans un univers fantasy." />
+        <meta name="twitter:card" content="summary" />
 
-        <title>Brandon — Portfolio</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href="./public/icons/favicon-32.png" />
+        <link rel="apple-touch-icon" href="./public/icons/apple-touch-icon.png" />
+
+        <!-- Image d'en-tête chargée en priorité (meilleur temps d'affichage) -->
+        <link rel="preload" as="image" href="./public/images/bg_hero_index.webp" type="image/webp" fetchpriority="high" />
+
+        <!-- Applique le thème mémorisé avant l'affichage pour éviter un flash clair -->
+        <script>
+            try {
+                if (localStorage.getItem("portfolio-theme") === "dark") {
+                    document.documentElement.classList.add("dark");
+                }
+            } catch (error) {}
+        </script>
 
         <link rel="stylesheet" href="./src/css/output.css" />
     </head>
 
     <body>
-        <!-- =====================================================
-             NAVIGATION
-             ===================================================== -->
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Navigation principale">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-
-                <!-- Logo -->
-                <a
-                    href="./index.html"
-                    class="text-xl font-bold tracking-wide text-parchemin-100 transition-colors hover:text-accent-300"
-                >
+                <a href="./index.html" class="text-xl font-bold tracking-wide text-parchemin-100 transition-colors hover:text-accent-300">
                     ✦ Mon Portfolio
                 </a>
 
-                <!-- Navigation desktop -->
-                <div id="nav-links" class="hidden items-center gap-8 md:flex">
-                    <a href="./index.html" class="nav-link">
-                        Accueil
-                    </a>
-
-                    <a href="./src/pages/about.html" class="nav-link">
-                        À propos
-                    </a>
-
-                    <a href="./src/pages/wip.html" class="nav-link">
-                        Rôle &amp; Fairies
-                    </a>
-
-                    <a href="./src/pages/projects.html" class="nav-link">
-                        Projets
-                    </a>
-
-                    <a href="./src/pages/contact.html" class="nav-link">
-                        Contact
-                    </a>
-
-                    <button
-                        id="theme-button"
-                        type="button"
-                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 transition-all hover:border-accent-400/50 hover:bg-parchemin-50/10"
-                        aria-label="Activer le thème sombre"
-                    >
-                        🌙
-                    </button>
+                <div class="hidden items-center gap-8 md:flex">
+                    <a href="./index.html" class="nav-link nav-link-active" aria-current="page">Accueil</a>
+                    <a href="./src/pages/about.html" class="nav-link">À propos</a>
+                    <a href="./src/pages/projects.html" class="nav-link">Projets</a>
+                    <a href="./src/pages/wip.html" class="nav-link">Rôle &amp; Fairies</a>
+                    <a href="./src/pages/contact.html" class="nav-link">Contact</a>
+                    <button type="button" class="nav-button" data-theme-toggle aria-label="Activer le thème sombre">🌙</button>
                 </div>
 
-                <!-- Menu mobile -->
                 <div class="flex items-center gap-2 md:hidden">
-                    <button
-                        id="theme-button"
-                        type="button"
-                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2"
-                        aria-label="Activer le thème sombre"
-                    >
-                        🌙
-                    </button>
-
-                    <button
-                        id="menu-button"
-                        type="button"
-                        class="rounded-lg border border-parchemin-100/20 bg-pierre-950/30 px-3 py-2 text-parchemin-100"
-                        aria-label="Ouvrir le menu"
-                    >
-                        ☰
-                    </button>
+                    <button type="button" class="nav-button" data-theme-toggle aria-label="Activer le thème sombre">🌙</button>
+                    <button id="menu-button" type="button" class="nav-button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
                 </div>
             </div>
 
-            <!-- Menu mobile -->
-            <div
-                id="mobile-menu"
-                class="mobile-menu hidden flex-col gap-4 border-t border-parchemin-100/10 px-6 py-5 md:hidden"
-            >
-                <a href="./index.html" class="nav-link">
-                    Accueil
-                </a>
-
-                <a href="./src/pages/about.html" class="nav-link">
-                    À propos
-                </a>
-
-                <a href="./src/pages/wip.html" class="nav-link">
-                    Rôle &amp; Fairies
-                </a>
-
-                <a href="./src/pages/projects.html" class="nav-link">
-                    Projets
-                </a>
-
-                <a href="./src/pages/contact.html" class="nav-link">
-                    Contact
-                </a>
+            <div id="mobile-menu" class="hidden flex-col gap-4 border-t border-parchemin-100/10 px-6 py-5 md:hidden">
+                <a href="./index.html" class="nav-link nav-link-active" aria-current="page">Accueil</a>
+                <a href="./src/pages/about.html" class="nav-link">À propos</a>
+                <a href="./src/pages/projects.html" class="nav-link">Projets</a>
+                <a href="./src/pages/wip.html" class="nav-link">Rôle &amp; Fairies</a>
+                <a href="./src/pages/contact.html" class="nav-link">Contact</a>
             </div>
         </nav>
 
         <main>
-            <!-- =================================================
-                 HERO
-                 ================================================= -->
-
-            <section
-                class="relative flex min-h-screen items-center overflow-hidden"
-            >
-                <!-- Image de fond floutée -->
-
+            <!-- HERO -->
+            <section class="relative flex min-h-screen items-center overflow-hidden">
                 <div
                     class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
-                    style="
-                        background-image:
-                            url('./public/images/bg_hero_index.jpg');
-                    "
+                    style="background-image: url('./public/images/bg_hero_index.webp');"
                     aria-hidden="true"
                 ></div>
+                <div class="absolute inset-0 bg-cuir-950/60" aria-hidden="true"></div>
 
-                <!-- Voile sombre -->
-
-                <div
-                    class="absolute inset-0 bg-cuir-950/60"
-                    aria-hidden="true"
-                ></div>
-
-                <!-- Contenu -->
-
-                <div
-                    class="relative z-10 mx-auto w-full max-w-7xl px-6 py-32"
-                >
+                <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-32">
                     <div class="max-w-3xl">
-                        <!-- Badge -->
-
                         <div class="mb-6">
-                            <span class="badge badge-accent">
-                                ✦ Étudiant EPITECH
-                            </span>
+                            <span class="badge badge-accent">✦ Étudiant EPITECH</span>
                         </div>
 
-                        <!-- Titre -->
-
-                        <h1
-                            class="text-5xl font-bold leading-tight text-parchemin-50 md:text-6xl lg:text-7xl"
-                        >
+                        <h1 class="text-5xl font-bold leading-tight text-parchemin-50 md:text-6xl lg:text-7xl">
                             Mes aventures
-                            <span class="text-accent-300">
-                                encapsulées
-                            </span>
+                            <span class="text-accent-300">encapsulées</span>
                             en expériences.
                         </h1>
 
-                        <!-- Description -->
-
-                        <p
-                            class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl"
-                        >
+                        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl">
                             Étudiant en informatique, je transforme mes idées
                             en projets et mes apprentissages en expériences.
                             Bienvenue dans mon univers où le développement
                             rencontre un imaginaire fantastique et médiéval.
                         </p>
 
-                        <!-- Boutons -->
-
-                        <div
-                            class="mt-8 flex flex-col gap-4 sm:flex-row"
-                        >
-                            <a
-                                href="./src/pages/projects.html"
-                                class="btn btn-primary"
-                            >
-                                Découvrir mes projets
-
-                                <span class="arrow">
-                                    →
-                                </span>
+                        <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                            <a href="./src/pages/projects.html" class="btn btn-primary">
+                                Découvrir mes projets <span class="arrow">→</span>
                             </a>
-
-                            <a
-                                href="./src/pages/contact.html"
-                                class="btn btn-secondary"
-                            >
+                            <a href="./src/pages/contact.html" class="btn btn-secondary">
                                 Me contacter
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Indication de scroll -->
-
-                <div
-                    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-parchemin-200/70"
-                >
-                    <span
-                        class="block text-xs uppercase tracking-[0.25em]"
-                    >
-                        Explorer
-                    </span>
-
-                    <span
-                        class="mt-2 block animate-bounce text-lg"
-                    >
-                        ↓
-                    </span>
+                <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-parchemin-200/70" aria-hidden="true">
+                    <span class="block text-xs uppercase tracking-[0.25em]">Explorer</span>
+                    <span class="mt-2 block animate-bounce text-lg">↓</span>
                 </div>
             </section>
 
-            <!-- =================================================
-                 INTRODUCTION
-                 ================================================= -->
-
+            <!-- PROJETS MIS EN AVANT -->
             <section class="section section-parchment">
                 <div class="section-heading reveal">
-                    <div class="section-eyebrow">
-                        ✦ Mon grimoire
-                    </div>
-
-                    <h2 class="section-title">
-                        Quelques aventures de mon parcours
-                    </h2>
-
+                    <p class="section-eyebrow">✦ Mon grimoire</p>
+                    <h2 class="section-title">Quelques aventures de mon parcours</h2>
                     <p class="section-description">
                         Chaque projet représente une étape de mon
                         apprentissage, une nouvelle compétence découverte
@@ -243,534 +125,205 @@
                     </p>
                 </div>
 
-                <!-- Cartes magiques -->
-
-                <div
-                    class="grid gap-8 md:grid-cols-2"
-                >
-                    <!-- CV -->
-
-                    <article
-                        class="fantasy-card project-card overflow-hidden"
-                    >
-                        <div
-                            class="project-magic-card magic-theme-ember"
-                        >
-                            <div
-                                class="magic-orbit magic-orbit-outer"
-                            ></div>
-
-                            <div
-                                class="magic-orbit magic-orbit-inner"
-                            ></div>
-
+                <div class="grid gap-8 md:grid-cols-2">
+                    <article class="fantasy-card project-card">
+                        <div class="project-magic-card magic-theme-ember">
+                            <div class="magic-orbit magic-orbit-outer"></div>
+                            <div class="magic-orbit magic-orbit-inner"></div>
                             <div class="magic-glow"></div>
-
-                            <div class="magic-rune">
-                                ✦
+                            <div class="magic-rune">✦</div>
+                            <div class="magic-particles" aria-hidden="true">
+                                <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
                             </div>
-
-                            <div
-                                class="magic-particles"
-                                aria-hidden="true"
-                            >
-                                <span>✦</span>
-                                <span>◇</span>
-                                <span>✧</span>
-                                <span>·</span>
-                                <span>✦</span>
-                                <span>◇</span>
-                            </div>
-
                             <div class="magic-card-content">
-                                <span class="magic-card-label">
-                                    Projet terminé
-                                </span>
-
-                                <strong>
-                                    CV interactif
-                                </strong>
+                                <span class="magic-card-label">Projet terminé</span>
+                                <strong>CV interactif</strong>
                             </div>
                         </div>
 
                         <div class="p-6">
-                            <span class="tag tag-sauge">
-                                Septembre 2026
-                            </span>
-
-                            <h3
-                                class="mt-4 text-2xl font-bold text-cuir-900"
-                            >
-                                CV interactif
-                            </h3>
-
-                            <p
-                                class="mt-3 leading-relaxed text-cuir-600"
-                            >
+                            <span class="tag tag-sauge">Septembre 2026</span>
+                            <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">CV interactif</h3>
+                            <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
                                 Transformer un CV classique en une
                                 expérience web plus interactive,
                                 en travaillant sur la structure,
                                 le design et les interactions.
                             </p>
-
-                            <a
-                                href="./src/pages/projects.html"
-                                class="arrow-link mt-5"
-                            >
-                                Voir le projet
-
-                                <span class="arrow">
-                                    →
-                                </span>
+                            <a href="./src/pages/projects.html" class="arrow-link mt-5">
+                                Voir le projet <span class="arrow">→</span>
                             </a>
                         </div>
                     </article>
 
-                    <!-- Python -->
-
-                    <article
-                        class="fantasy-card project-card overflow-hidden"
-                    >
-                        <div
-                            class="project-magic-card magic-theme-arcane"
-                        >
-                            <div
-                                class="magic-orbit magic-orbit-outer"
-                            ></div>
-
-                            <div
-                                class="magic-orbit magic-orbit-inner"
-                            ></div>
-
+                    <article class="fantasy-card project-card">
+                        <div class="project-magic-card magic-theme-arcane">
+                            <div class="magic-orbit magic-orbit-outer"></div>
+                            <div class="magic-orbit magic-orbit-inner"></div>
                             <div class="magic-glow"></div>
-
-                            <div class="magic-rune">
-                                ◇
+                            <div class="magic-rune">◇</div>
+                            <div class="magic-particles" aria-hidden="true">
+                                <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
                             </div>
-
-                            <div
-                                class="magic-particles"
-                                aria-hidden="true"
-                            >
-                                <span>✦</span>
-                                <span>◇</span>
-                                <span>✧</span>
-                                <span>·</span>
-                                <span>✦</span>
-                                <span>◇</span>
-                            </div>
-
                             <div class="magic-card-content">
-                                <span class="magic-card-label">
-                                    Projet terminé
-                                </span>
-
-                                <strong>
-                                    Parcours Python
-                                </strong>
+                                <span class="magic-card-label">Projet terminé</span>
+                                <strong>Parcours Python</strong>
                             </div>
                         </div>
 
                         <div class="p-6">
-                            <span class="tag tag-sauge">
-                                Septembre 2026
-                            </span>
-
-                            <h3
-                                class="mt-4 text-2xl font-bold text-cuir-900"
-                            >
-                                Parcours Python
-                            </h3>
-
-                            <p
-                                class="mt-3 leading-relaxed text-cuir-600"
-                            >
+                            <span class="tag tag-sauge">Septembre 2026</span>
+                            <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Parcours Python</h3>
+                            <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
                                 Un parcours d'apprentissage autour
                                 des fondamentaux de Python, des exercices
                                 pratiques et de la création d'un jeu
                                 avec Pygame.
                             </p>
-
-                            <a
-                                href="./src/pages/projects.html"
-                                class="arrow-link mt-5"
-                            >
-                                Voir le projet
-
-                                <span class="arrow">
-                                    →
-                                </span>
+                            <a href="./src/pages/projects.html" class="arrow-link mt-5">
+                                Voir le projet <span class="arrow">→</span>
                             </a>
                         </div>
                     </article>
 
-                    <!-- Rôle & Fairies -->
-
-                    <article
-                        class="fantasy-card project-card overflow-hidden"
-                    >
-                        <div
-                            class="project-magic-card magic-theme-sage"
-                        >
-                            <div
-                                class="magic-orbit magic-orbit-outer"
-                            ></div>
-
-                            <div
-                                class="magic-orbit magic-orbit-inner"
-                            ></div>
-
+                    <article class="fantasy-card project-card">
+                        <div class="project-magic-card magic-theme-sage">
+                            <div class="magic-orbit magic-orbit-outer"></div>
+                            <div class="magic-orbit magic-orbit-inner"></div>
                             <div class="magic-glow"></div>
-
-                            <div class="magic-rune">
-                                ✧
+                            <div class="magic-rune">✧</div>
+                            <div class="magic-particles" aria-hidden="true">
+                                <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
                             </div>
-
-                            <div
-                                class="magic-particles"
-                                aria-hidden="true"
-                            >
-                                <span>✦</span>
-                                <span>◇</span>
-                                <span>✧</span>
-                                <span>·</span>
-                                <span>✦</span>
-                                <span>◇</span>
-                            </div>
-
                             <div class="magic-card-content">
-                                <span class="magic-card-label">
-                                    Projet en cours
-                                </span>
-
-                                <strong>
-                                    Rôle &amp; Fairies
-                                </strong>
+                                <span class="magic-card-label">Projet en cours</span>
+                                <strong>Rôle &amp; Fairies</strong>
                             </div>
                         </div>
 
                         <div class="p-6">
-                            <span class="tag tag-sauge">
-                                2026 → aujourd'hui
-                            </span>
-
-                            <h3
-                                class="mt-4 text-2xl font-bold text-cuir-900"
-                            >
-                                Rôle &amp; Fairies
-                            </h3>
-
-                            <p
-                                class="mt-3 leading-relaxed text-cuir-600"
-                            >
+                            <span class="tag tag-sauge">2026 → aujourd'hui</span>
+                            <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Rôle &amp; Fairies</h3>
+                            <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
                                 Un projet personnel autour du jeu de rôle,
                                 du développement web et de l'exploration
                                 de nouvelles technologies.
                             </p>
-
-                            <a
-                                href="./src/pages/wip.html"
-                                class="arrow-link mt-5"
-                            >
-                                Découvrir l'aventure
-
-                                <span class="arrow">
-                                    →
-                                </span>
+                            <a href="./src/pages/wip.html" class="arrow-link mt-5">
+                                Découvrir l'aventure <span class="arrow">→</span>
                             </a>
                         </div>
                     </article>
 
-                    <!-- Portfolio -->
-
-                    <article
-                        class="fantasy-card project-card overflow-hidden"
-                    >
-                        <div
-                            class="project-magic-card magic-theme-parchment"
-                        >
-                            <div
-                                class="magic-orbit magic-orbit-outer"
-                            ></div>
-
-                            <div
-                                class="magic-orbit magic-orbit-inner"
-                            ></div>
-
+                    <article class="fantasy-card project-card">
+                        <div class="project-magic-card magic-theme-parchment">
+                            <div class="magic-orbit magic-orbit-outer"></div>
+                            <div class="magic-orbit magic-orbit-inner"></div>
                             <div class="magic-glow"></div>
-
-                            <div class="magic-rune">
-                                ❖
+                            <div class="magic-rune">❖</div>
+                            <div class="magic-particles" aria-hidden="true">
+                                <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
                             </div>
-
-                            <div
-                                class="magic-particles"
-                                aria-hidden="true"
-                            >
-                                <span>✦</span>
-                                <span>◇</span>
-                                <span>✧</span>
-                                <span>·</span>
-                                <span>✦</span>
-                                <span>◇</span>
-                            </div>
-
                             <div class="magic-card-content">
-                                <span class="magic-card-label">
-                                    Projet en cours
-                                </span>
-
-                                <strong>
-                                    Portfolio personnel
-                                </strong>
+                                <span class="magic-card-label">Projet en cours</span>
+                                <strong>Portfolio personnel</strong>
                             </div>
                         </div>
 
                         <div class="p-6">
-                            <span class="tag tag-sauge">
-                                2026 → aujourd'hui
-                            </span>
-
-                            <h3
-                                class="mt-4 text-2xl font-bold text-cuir-900"
-                            >
-                                Portfolio personnel
-                            </h3>
-
-                            <p
-                                class="mt-3 leading-relaxed text-cuir-600"
-                            >
+                            <span class="tag tag-sauge">2026 → aujourd'hui</span>
+                            <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Portfolio personnel</h3>
+                            <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
                                 Mon premier véritable univers web,
                                 conçu pour présenter mon parcours,
                                 mes projets et les compétences que
                                 je développe.
                             </p>
-
-                            <a
-                                href="./src/pages/projects.html"
-                                class="arrow-link mt-5"
-                            >
-                                Voir mes projets
-
-                                <span class="arrow">
-                                    →
-                                </span>
+                            <a href="./src/pages/projects.html" class="arrow-link mt-5">
+                                Voir mes projets <span class="arrow">→</span>
                             </a>
                         </div>
                     </article>
                 </div>
 
-                <!-- CTA -->
-
-                <div
-                    class="mt-12 text-center reveal"
-                >
-                    <a
-                        href="./src/pages/projects.html"
-                        class="btn btn-primary"
-                    >
-                        Consulter toutes mes aventures
-
-                        <span class="arrow">
-                            →
-                        </span>
+                <div class="reveal mt-12 text-center">
+                    <a href="./src/pages/projects.html" class="btn btn-primary">
+                        Consulter toutes mes aventures <span class="arrow">→</span>
                     </a>
                 </div>
             </section>
 
-            <!-- =================================================
-                 PRÉSENTATION
-                 ================================================= -->
-
+            <!-- PRÉSENTATION -->
             <section class="section section-sauge">
-                <div
-                    class="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2"
-                >
+                <div class="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
                     <div class="reveal">
-                        <div class="section-eyebrow">
-                            ✦ Mon parcours
-                        </div>
-
-                        <h2
-                            class="text-3xl font-bold text-cuir-900 md:text-4xl"
-                        >
+                        <p class="section-eyebrow">✦ Mon parcours</p>
+                        <h2 class="text-3xl font-bold text-cuir-900 md:text-4xl dark:text-parchemin-100">
                             Apprendre, expérimenter,
                             construire.
                         </h2>
-
-                        <p
-                            class="mt-5 leading-relaxed text-cuir-700"
-                        >
+                        <p class="mt-5 leading-relaxed text-cuir-700 dark:text-parchemin-300">
                             Je suis étudiant en informatique et je construis
                             progressivement mes compétences à travers des
                             projets concrets.
                         </p>
-
-                        <p
-                            class="mt-4 leading-relaxed text-cuir-700"
-                        >
+                        <p class="mt-4 leading-relaxed text-cuir-700 dark:text-parchemin-300">
                             J'aime particulièrement comprendre comment les
                             choses fonctionnent, expérimenter de nouvelles
                             idées et transformer mes apprentissages en
                             réalisations concrètes.
                         </p>
-
-                        <a
-                            href="./src/pages/about.html"
-                            class="arrow-link mt-6"
-                        >
-                            Découvrir mon parcours
-
-                            <span class="arrow">
-                                →
-                            </span>
+                        <a href="./src/pages/about.html" class="arrow-link mt-6">
+                            Découvrir mon parcours <span class="arrow">→</span>
                         </a>
                     </div>
 
-                    <!-- Petit grimoire décoratif -->
+                    <div class="reveal flex justify-center">
+                        <div class="relative flex h-72 w-full max-w-md items-center justify-center overflow-hidden rounded-2xl border border-cuir-300 bg-cuir-900 p-8 shadow-xl dark:border-pierre-700">
+                            <div class="absolute h-48 w-48 rounded-full border border-parchemin-300/20" aria-hidden="true"></div>
+                            <div class="absolute h-32 w-32 rounded-full border border-accent-300/30" aria-hidden="true"></div>
 
-                    <div
-                        class="flex justify-center reveal"
-                    >
-                        <div
-                            class="relative flex h-72 w-full max-w-md items-center justify-center overflow-hidden rounded-2xl border border-cuir-300 bg-cuir-900 p-8 shadow-xl"
-                        >
-                            <div
-                                class="absolute h-48 w-48 rounded-full border border-parchemin-300/20"
-                            ></div>
-
-                            <div
-                                class="absolute h-32 w-32 rounded-full border border-accent-300/30"
-                            ></div>
-
-                            <div
-                                class="relative z-10 text-center text-parchemin-100"
-                            >
-                                <div
-                                    class="text-5xl text-accent-300"
-                                >
-                                    ✦
-                                </div>
-
-                                <p
-                                    class="mt-4 text-lg font-semibold"
-                                >
-                                    Chaque projet est une nouvelle
-                                    aventure.
-                                </p>
-
-                                <p
-                                    class="mt-2 text-sm text-parchemin-300"
-                                >
-                                    Et chaque aventure m'apprend quelque
-                                    chose.
-                                </p>
+                            <div class="relative z-10 text-center text-parchemin-100">
+                                <div class="text-5xl text-accent-300" aria-hidden="true">✦</div>
+                                <p class="mt-4 text-lg font-semibold">Chaque projet est une nouvelle aventure.</p>
+                                <p class="mt-2 text-sm text-parchemin-300">Et chaque aventure m'apprend quelque chose.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- =================================================
-                 CONTACT
-                 ================================================= -->
-
+            <!-- CONTACT -->
             <section class="section section-parchment">
-                <div class="mx-auto max-w-3xl text-center reveal">
-                    <div class="section-eyebrow">
-                        ✦ Une nouvelle quête ?
-                    </div>
-
-                    <h2 class="section-title">
-                        Échangeons quelques mots.
-                    </h2>
-
+                <div class="reveal mx-auto max-w-3xl text-center">
+                    <p class="section-eyebrow">✦ Une nouvelle quête ?</p>
+                    <h2 class="section-title">Échangeons quelques mots.</h2>
                     <p class="section-description">
                         Une idée, une question ou simplement envie
                         de discuter développement web ?
                         Ma boîte aux lettres est ouverte.
                     </p>
-
-                    <a
-                        href="./src/pages/contact.html"
-                        class="btn btn-primary mt-8"
-                    >
-                        Me contacter
-
-                        <span class="arrow">
-                            →
-                        </span>
+                    <a href="./src/pages/contact.html" class="btn btn-primary mt-8">
+                        Me contacter <span class="arrow">→</span>
                     </a>
                 </div>
             </section>
         </main>
 
-        <!-- =====================================================
-             FOOTER
-             ===================================================== -->
-
-        <footer
-            class="border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950"
-        >
-
-            <div
-                class="mx-auto max-w-7xl px-6 py-8"
-            >
-
-                <div
-                    class="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left"
-                >
-
-                    <p
-                        class="text-sm text-cuir-600 dark:text-parchemin-400"
-                    >
-                        © 2026 Chhoeum Brandon — Contact
+        <footer class="footer-light border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950">
+            <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-center md:flex-row md:text-left">
+                <div class="flex flex-col gap-1">
+                    <p class="text-sm text-cuir-800 dark:text-parchemin-400">© 2026 Chhoeum Brandon — Portfolio</p>
+                    <p class="photo-credit text-sm text-cuir-800 dark:text-parchemin-400">
+                        Photo d'en-tête : <a href="https://www.pexels.com/photo/rocky-landscape-with-a-mountain-stream-and-clouds-15575235/" target="_blank" rel="noopener noreferrer">Jozsef Mihalyi</a> sur Pexels
                     </p>
-
-                    <a
-                        href="./index.html"
-                        class="arrow-link"
-                    >
-                        Retour à l'accueil
-
-                        <span class="arrow">
-                            →
-                        </span>
-                    </a>
-
                 </div>
-
+                <a href="./src/pages/contact.html" class="arrow-link">
+                    Me contacter <span class="arrow">→</span>
+                </a>
             </div>
-
         </footer>
 
-        <!-- =====================================================
-             JAVASCRIPT
-             ===================================================== -->
-
         <script src="./src/js/main.js"></script>
-
-        <script>
-            const revealElements =
-                document.querySelectorAll(".reveal");
-
-            const revealObserver =
-                new IntersectionObserver(
-                    function (entries) {
-                        entries.forEach(function (entry) {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add("visible");
-                            }
-                        });
-                    },
-                    {
-                        threshold: 0.15
-                    }
-                );
-
-            revealElements.forEach(function (element) {
-                revealObserver.observe(element);
-            });
-        </script>
     </body>
 </html>

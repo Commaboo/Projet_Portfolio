@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
+/* Le mode sombre s'active avec la classe .dark posée sur <html> par main.js. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Seuls les composants communs sont compilés ici.
+ * Chaque page charge sa propre feuille (about.css, contact.css, projects.css, wip.css).
+ */
 @import "./components.css";
-@import "./about.css";
 
 @source "../../";
 
@@ -80,18 +84,9 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255, 255, 255, 0.5),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(128, 107, 78, 0.1),
-            transparent 40%
-        ),
+        radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.5), transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(128, 107, 78, 0.1), transparent 40%),
         #f5f1e7;
     color: #332019;
     font-family: Georgia, "Times New Roman", serif;
@@ -114,11 +109,6 @@ html.dark ::selection {
     background: #c45c3c;
     color: #171411;
 }
-
-
-/* =========================================================
-   MODE SOMBRE
-   ========================================================= */
 
 html.dark .fantasy-card {
     box-shadow:

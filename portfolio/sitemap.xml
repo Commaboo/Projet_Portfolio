@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Remplacer https://commaboo.github.io/portfolio/ par l'adresse réelle du site une fois déployé -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://commaboo.github.io/portfolio/</loc><priority>1.0</priority></url>
+    <url><loc>https://commaboo.github.io/portfolio/src/pages/about.html</loc><priority>0.8</priority></url>
+    <url><loc>https://commaboo.github.io/portfolio/src/pages/projects.html</loc><priority>0.9</priority></url>
+    <url><loc>https://commaboo.github.io/portfolio/src/pages/wip.html</loc><priority>0.6</priority></url>
+    <url><loc>https://commaboo.github.io/portfolio/src/pages/contact.html</loc><priority>0.7</priority></url>
+    <url><loc>https://commaboo.github.io/portfolio/src/projet/resume/resume.html</loc><priority>0.7</priority></url>
+</urlset>

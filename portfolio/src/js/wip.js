@@ -1,11 +1,8 @@
 /* =========================================================
-   PAGE RÔLE & FAIRIES — JAVASCRIPT
+   PAGE RÔLE & FAIRIES
    ========================================================= */
 
-
-/* =========================================================
-   DONNÉES DES FONCTIONNALITÉS
-   ========================================================= */
+/* FONCTIONNALITÉS ENVISAGÉES */
 
 const features = [
     {
@@ -22,7 +19,6 @@ const features = [
             "Réfléchir à une interface adaptée au jeu de rôle"
         ]
     },
-
     {
         icon: "🧙",
         title: "Gestion des personnages",
@@ -37,7 +33,6 @@ const features = [
             "Construire une interface facilement lisible"
         ]
     },
-
     {
         icon: "⚔️",
         title: "Gestion des combats",
@@ -52,7 +47,6 @@ const features = [
             "Approfondir JavaScript"
         ]
     },
-
     {
         icon: "🔮",
         title: "Sorts & capacités",
@@ -67,7 +61,6 @@ const features = [
             "Réfléchir à l'expérience utilisateur"
         ]
     },
-
     {
         icon: "🎒",
         title: "Inventaire",
@@ -82,7 +75,6 @@ const features = [
             "Structurer les données"
         ]
     },
-
     {
         icon: "👑",
         title: "Outils du maître du jeu",
@@ -97,7 +89,6 @@ const features = [
             "Construire une interface adaptée au MJ"
         ]
     },
-
     {
         icon: "🎲",
         title: "Outils aléatoires",
@@ -112,7 +103,6 @@ const features = [
             "Expérimenter différents composants"
         ]
     },
-
     {
         icon: "🌌",
         title: "Expérimentations 3D",
@@ -130,257 +120,87 @@ const features = [
 ];
 
 
-/* =========================================================
-   GÉNÉRATION DES CARTES
-   ========================================================= */
+/* MODALE */
 
-const featuresGrid =
-    document.getElementById("features-grid");
+const featuresGrid = document.getElementById("features-grid");
+const featureModal = document.getElementById("feature-modal");
+const modalIcon = document.getElementById("feature-modal-icon");
+const modalStatus = document.getElementById("feature-modal-status");
+const modalTitle = document.getElementById("feature-modal-title");
+const modalDescription = document.getElementById("feature-modal-description");
+const modalGoals = document.getElementById("feature-modal-goals");
+const closeModalButton = document.getElementById("close-feature-modal");
 
-const featureModal =
-    document.getElementById("feature-modal");
+let lastFocusedCard = null;
 
-const closeFeatureModal =
-    document.getElementById(
-        "close-feature-modal"
-    );
-
-const closeFeatureModalBottom =
-    document.getElementById(
-        "close-feature-modal-bottom"
-    );
-
-const featureModalIcon =
-    document.getElementById(
-        "feature-modal-icon"
-    );
-
-const featureModalStatus =
-    document.getElementById(
-        "feature-modal-status"
-    );
-
-const featureModalTitle =
-    document.getElementById(
-        "feature-modal-title"
-    );
-
-const featureModalDescription =
-    document.getElementById(
-        "feature-modal-description"
-    );
-
-const featureModalGoals =
-    document.getElementById(
-        "feature-modal-goals"
-    );
-
-
-/* =========================================================
-   OUVRIR LA MODALE
-   ========================================================= */
-
-function openFeatureModal(feature) {
-
+function openFeatureModal(feature, card) {
     if (!featureModal) return;
 
-    featureModalIcon.textContent =
-        feature.icon;
+    lastFocusedCard = card;
+    modalIcon.textContent = feature.icon;
+    modalStatus.textContent = feature.status;
+    modalTitle.textContent = feature.title;
+    modalDescription.textContent = feature.description;
 
-    featureModalStatus.textContent =
-        feature.status;
+    modalGoals.replaceChildren(
+        ...feature.goals.map(function (goal) {
+            const item = document.createElement("li");
+            item.textContent = goal;
+            return item;
+        })
+    );
 
-    featureModalTitle.textContent =
-        feature.title;
+    featureModal.classList.remove("hidden");
+    featureModal.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    closeModalButton?.focus();
+}
 
-    featureModalDescription.textContent =
-        feature.description;
+function closeFeatureModal() {
+    if (!featureModal || featureModal.classList.contains("hidden")) return;
+
+    featureModal.classList.add("hidden");
+    featureModal.classList.remove("flex");
+    document.body.style.overflow = "";
+    lastFocusedCard?.focus();
+}
 
 
-    featureModalGoals.innerHTML = "";
+/* CARTES */
 
+features.forEach(function (feature) {
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "wip-feature-card";
+    card.innerHTML = `
+        <div class="wip-feature-top">
+            <div class="wip-feature-icon" aria-hidden="true">${feature.icon}</div>
+            <span class="wip-feature-status">${feature.status}</span>
+        </div>
+        <span class="wip-feature-category">${feature.category}</span>
+        <h3>${feature.title}</h3>
+        <p>${feature.description}</p>
+        <span class="wip-feature-link">Ouvrir le grimoire <span aria-hidden="true">→</span></span>
+    `;
 
-    feature.goals.forEach(function (goal) {
-
-        const item =
-            document.createElement("li");
-
-        item.textContent =
-            goal;
-
-        featureModalGoals.appendChild(
-            item
-        );
+    card.addEventListener("click", function () {
+        openFeatureModal(feature, card);
     });
 
-
-    featureModal.classList.remove(
-        "hidden"
-    );
-
-    featureModal.classList.add(
-        "flex"
-    );
-
-    document.body.style.overflow =
-        "hidden";
-}
+    featuresGrid?.appendChild(card);
+});
 
 
-/* =========================================================
-   FERMER LA MODALE
-   ========================================================= */
+/* FERMETURE : boutons, clic sur le fond, touche Échap */
 
-function closeFeatureModalWindow() {
+["close-feature-modal", "close-feature-modal-bottom"].forEach(function (id) {
+    document.getElementById(id)?.addEventListener("click", closeFeatureModal);
+});
 
-    if (!featureModal) return;
+featureModal?.addEventListener("click", function (event) {
+    if (event.target === featureModal) closeFeatureModal();
+});
 
-    featureModal.classList.add(
-        "hidden"
-    );
-
-    featureModal.classList.remove(
-        "flex"
-    );
-
-    document.body.style.overflow =
-        "";
-}
-
-
-/* =========================================================
-   CRÉATION DES CARTES
-   ========================================================= */
-
-if (featuresGrid) {
-
-    features.forEach(function (feature) {
-
-        const card =
-            document.createElement("button");
-
-        card.type = "button";
-
-        card.className =
-            "wip-feature-card";
-
-
-        card.innerHTML = `
-
-            <div class="wip-feature-top">
-
-                <div class="wip-feature-icon">
-                    ${feature.icon}
-                </div>
-
-                <span class="wip-feature-status">
-                    ${feature.status}
-                </span>
-
-            </div>
-
-
-            <span class="wip-feature-category">
-                ${feature.category}
-            </span>
-
-
-            <h3>
-                ${feature.title}
-            </h3>
-
-
-            <p>
-                ${feature.description}
-            </p>
-
-
-            <span class="wip-feature-link">
-                Ouvrir le grimoire
-                <span>→</span>
-            </span>
-
-        `;
-
-
-        card.addEventListener(
-            "click",
-            function () {
-                openFeatureModal(
-                    feature
-                );
-            }
-        );
-
-
-        featuresGrid.appendChild(
-            card
-        );
-    });
-}
-
-
-/* =========================================================
-   BOUTONS DE FERMETURE
-   ========================================================= */
-
-if (closeFeatureModal) {
-
-    closeFeatureModal.addEventListener(
-        "click",
-        closeFeatureModalWindow
-    );
-}
-
-
-if (closeFeatureModalBottom) {
-
-    closeFeatureModalBottom.addEventListener(
-        "click",
-        closeFeatureModalWindow
-    );
-}
-
-
-/* =========================================================
-   CLIC EN DEHORS DE LA MODALE
-   ========================================================= */
-
-if (featureModal) {
-
-    featureModal.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target ===
-                featureModal
-            ) {
-                closeFeatureModalWindow();
-            }
-
-        }
-    );
-}
-
-
-/* =========================================================
-   TOUCHE ESCAPE
-   ========================================================= */
-
-document.addEventListener(
-    "keydown",
-    function (event) {
-
-        if (
-            event.key === "Escape" &&
-            featureModal &&
-            !featureModal.classList.contains(
-                "hidden"
-            )
-        ) {
-            closeFeatureModalWindow();
-        }
-
-    }
-);
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeFeatureModal();
+});

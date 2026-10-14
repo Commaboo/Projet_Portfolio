@@ -1,49 +1,81 @@
-const scrollOpen = document.getElementById("scroll-open");
-const contactParchment = document.getElementById("contact-parchment");
-const closeParchment = document.getElementById("close-parchment");
+/* =========================================================
+   PAGE CONTACT
+   ========================================================= */
 
-scrollOpen.addEventListener("click", function () {
-    scrollOpen.classList.add("hidden");
-    contactParchment.classList.remove("hidden");
+/* PARCHEMIN : ouverture et fermeture du formulaire */
 
-    setTimeout(function () {
-        contactParchment.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+const openButton = document.getElementById("scroll-open");
+const parchment = document.getElementById("contact-parchment");
+
+// L'attribut hidden est utilisé pour le bouton : la classe .btn écraserait la classe "hidden".
+function openParchment() {
+    openButton.hidden = true;
+    openButton.setAttribute("aria-expanded", "true");
+    parchment.classList.remove("hidden");
+
+    // Laisse l'animation démarrer avant de faire défiler jusqu'au parchemin.
+    window.setTimeout(function () {
+        parchment.scrollIntoView({ behavior: "smooth", block: "center" });
+        document.getElementById("name")?.focus({ preventScroll: true });
     }, 150);
-});
+}
 
-closeParchment.addEventListener("click", function () {
-    contactParchment.classList.add("hidden");
-    scrollOpen.classList.remove("hidden");
-});
+function closeParchment() {
+    parchment.classList.add("hidden");
+    openButton.hidden = false;
+    openButton.setAttribute("aria-expanded", "false");
+    openButton.focus();
+}
 
+if (openButton && parchment) {
+    openButton.addEventListener("click", openParchment);
+
+    ["close-parchment", "close-parchment-bottom"].forEach(function (id) {
+        document.getElementById(id)?.addEventListener("click", closeParchment);
+    });
+}
+
+
+/* FORMULAIRE : envoi via Formspree sans quitter la page */
 
 const contactForm = document.getElementById("contact-form");
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const subjectInput = document.getElementById("subject");
-const messageInput = document.getElementById("message");
 const formMessage = document.getElementById("form-message");
 
-contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const subject = subjectInput.value.trim();
-    const message = messageInput.value.trim();
-
-    console.log("Nom :", name);
-    console.log("Email :", email);
-    console.log("Sujet :", subject);
-    console.log("Message :", message);
-
-    formMessage.textContent =
-        `Merci ${name} ! Votre message a bien été pris en compte.`;
-
+function showFormMessage(text) {
+    formMessage.textContent = text;
     formMessage.classList.remove("hidden");
+}
 
-    contactForm.reset();
-});
+if (contactForm && formMessage) {
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity()) return;
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonContent = submitButton.innerHTML;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Envoi en cours...";
+        showFormMessage("Envoi de votre message...");
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: "POST",
+                body: new FormData(contactForm),
+                headers: { Accept: "application/json" }
+            });
+
+            if (!response.ok) throw new Error(`Réponse ${response.status}`);
+
+            showFormMessage("Merci ! Votre message a bien été envoyé.");
+            contactForm.reset();
+        } catch (error) {
+            console.error("Erreur lors de l'envoi :", error);
+            showFormMessage("Impossible d'envoyer votre message. Veuillez réessayer.");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonContent;
+        }
+    });
+}

@@ -1,129 +1,78 @@
-/* SUR MOBILE */
+/* =========================================================
+   CV — MENU MOBILE ET FORMULAIRE
+   Le thème et l'apparition au défilement viennent du main.js du portfolio.
+   ========================================================= */
 
-const menuButton = document.querySelector("#menu-button");
-const navLinks = document.querySelector("#nav-links");
+/* MENU MOBILE */
 
-menuButton.addEventListener("click", () => {
+const menuButton = document.getElementById("cv-menu-button");
+const navLinks = document.getElementById("nav-links");
 
-    navLinks.classList.toggle("nav-open");
+// Classes ajoutées à l'ouverture : sous 768px, la liste devient un menu déroulant sous l'en-tête.
+const OPEN_MENU_CLASSES = [
+    "flex",
+    "max-md:absolute",
+    "max-md:inset-x-0",
+    "max-md:top-full",
+    "max-md:flex-col",
+    "max-md:items-start",
+    "max-md:gap-5",
+    "max-md:border-b",
+    "max-md:border-cuir-700/40",
+    "max-md:bg-cuir-800",
+    "max-md:px-5",
+    "max-md:py-6",
+    "max-md:shadow-xl"
+];
 
-});
-
-
-/* Close menu after a click  */
-
-const links = document.querySelectorAll("#nav-links a");
-
-links.forEach((link) => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("nav-open");
-
+function setMenuOpen(isOpen) {
+    navLinks.classList.toggle("hidden", !isOpen);
+    OPEN_MENU_CLASSES.forEach(function (className) {
+        navLinks.classList.toggle(className, isOpen);
     });
 
-});
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
+    menuButton.textContent = isOpen ? "✕" : "☰";
+}
 
+function isMenuOpen() {
+    return menuButton.getAttribute("aria-expanded") === "true";
+}
 
-/* SCROLL */
+if (menuButton && navLinks) {
+    menuButton.addEventListener("click", function () {
+        setMenuOpen(!isMenuOpen());
+    });
 
-const revealElements = document.querySelectorAll(".reveal");
-
-
-const observer = new IntersectionObserver(
-    (entries) => {
-
-        entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("visible");
-
-                observer.unobserve(entry.target);
-
-            }
-
+    navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (isMenuOpen()) setMenuOpen(false);
         });
+    });
 
-    },
-    {
-        threshold: 0.15
-    }
-);
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && isMenuOpen()) {
+            setMenuOpen(false);
+            menuButton.focus();
+        }
+    });
 
-
-revealElements.forEach((element) => {
-
-    observer.observe(element);
-
-});
-
-
-/* Form */
-
-const contactForm =
-    document.querySelector("#contact-form");
-
-const formMessage =
-    document.querySelector("#form-message");
+    window.matchMedia("(min-width: 768px)").addEventListener("change", function (event) {
+        if (event.matches && isMenuOpen()) setMenuOpen(false);
+    });
+}
 
 
-contactForm.addEventListener("submit", (event) => {
+/* FORMULAIRE : message de confirmation (aucun envoi réel) */
 
+const contactForm = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+contactForm?.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    formMessage.textContent =
-        "Votre message a bien été préparé. Merci pour votre contact !";
-
+    formMessage.textContent = "Votre message a bien été préparé. Merci pour votre contact !";
     formMessage.classList.remove("hidden");
-
     contactForm.reset();
-
-});
-
-
-/* Theme button */
-
-const themeButton =
-    document.querySelector("#theme-button");
-
-
-let darkMode = false;
-
-
-themeButton.addEventListener("click", () => {
-
-    darkMode = !darkMode;
-
-
-    if (darkMode) {
-
-        document.body.classList.remove(
-            "bg-parchemin-50",
-            "text-cuir-800"
-        );
-
-        document.body.classList.add(
-            "bg-pierre-950",
-            "text-parchemin-100"
-        );
-
-        themeButton.textContent = "D";
-
-    } else {
-
-        document.body.classList.remove(
-            "bg-pierre-950",
-            "text-parchemin-100"
-        );
-
-        document.body.classList.add(
-            "bg-parchemin-50",
-            "text-cuir-800"
-        );
-
-        themeButton.textContent = "L";
-
-    }
-
 });
