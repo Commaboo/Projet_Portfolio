@@ -1,0 +1,286 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/about.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="À propos | Brandon Chhoeum" description="Découvrez le parcours de Brandon Chhoeum : de la biologie au développement web, ses compétences, ses objectifs et ses centres d'intérêt." bodyClass="about-page" preloadHero>
+    <Nav active="about" />
+
+    <main>
+        <!-- HERO -->
+        <section class="relative flex h-[520px] items-center overflow-hidden">
+            <div
+                class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+                style={`background-image: url('${base}images/bg_hero_index.webp');`}
+                aria-hidden="true"
+            ></div>
+            <div class="absolute inset-0 bg-cuir-950/60" aria-hidden="true"></div>
+
+            <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24">
+                <div class="max-w-3xl">
+                    <div class="mb-6">
+                        <span class="badge badge-accent">✦ À propos de moi</span>
+                    </div>
+
+                    <h1 class="text-4xl font-bold leading-tight text-parchemin-50 sm:text-5xl md:text-6xl">
+                        Mon aventure dans le développement.
+                    </h1>
+
+                    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl">
+                        Découvrez mon parcours, mes apprentissages,
+                        mes centres d'intérêt et les expériences qui
+                        construisent mon univers dans le développement
+                        informatique.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARCOURS -->
+        <section class="section about-parcours-section">
+            <div class="section-heading">
+                <p class="section-eyebrow">Mon parcours</p>
+                <h2 class="section-title">Une aventure qui se construit pas à pas.</h2>
+                <p class="section-description">
+                    Chaque étape de mon parcours m'a permis d'acquérir de
+                    nouvelles compétences et de mieux comprendre le monde
+                    du développement informatique.
+                </p>
+            </div>
+
+            <!-- Timeline : la barre orange suit le défilement (about.js) -->
+            <div class="about-timeline-block">
+                <div class="about-timeline">
+                    <div class="timeline-line" aria-hidden="true"></div>
+                    <div id="timeline-progress" class="timeline-progress" aria-hidden="true"></div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-label">2022</span>
+                            <h3>Première découverte</h3>
+                            <p>
+                                Je commence à m'intéresser à l'informatique
+                                et à découvrir progressivement la programmation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-label">2024</span>
+                            <h3>Premiers projets</h3>
+                            <p>
+                                Je commence à réaliser mes premiers projets
+                                personnels et à expérimenter différentes
+                                technologies.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-label">2025</span>
+                            <h3>Formation</h3>
+                            <p>
+                                J'approfondis mes connaissances en programmation,
+                                en développement web et dans l'utilisation
+                                des outils de développement.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-label">Aujourd'hui</span>
+                            <h3>Construire la suite</h3>
+                            <p>
+                                Je continue à apprendre en réalisant des projets
+                                plus ambitieux et en explorant de nouvelles
+                                technologies.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte recto / verso -->
+            <div class="about-journey-card-block">
+                <div class="journey-card-wrapper">
+                    <div id="journey-card" class="journey-card">
+                        <div class="journey-card-face journey-card-front">
+                            <div class="journey-card-glow" aria-hidden="true"></div>
+                            <div class="journey-card-stars" aria-hidden="true">
+                                <span>✦</span><span>✧</span><span>◇</span><span>✦</span><span>·</span>
+                            </div>
+                            <div class="journey-rune" aria-hidden="true">✦</div>
+
+                            <div class="journey-card-content">
+                                <span class="journey-card-eyebrow">Mon aventure</span>
+                                <h3>Un parcours en construction</h3>
+                                <p>
+                                    Mon parcours dans le développement
+                                    informatique est encore jeune, mais
+                                    chaque projet représente une nouvelle
+                                    étape de mon apprentissage.
+                                </p>
+                                <button id="journey-flip" type="button" class="journey-flip-button">
+                                    Découvrir mon parcours <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="journey-card-face journey-card-back">
+                            <div class="journey-card-content">
+                                <span class="journey-card-eyebrow">Ce que je recherche</span>
+                                <h3>Continuer à progresser</h3>
+
+                                <div class="journey-info-list">
+                                    <div class="journey-info-item">
+                                        <div class="journey-info-icon">✦</div>
+                                        <div>
+                                            <strong>Apprendre</strong>
+                                            <span>Découvrir constamment de nouvelles technologies.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="journey-info-item">
+                                        <div class="journey-info-icon">⚔</div>
+                                        <div>
+                                            <strong>Expérimenter</strong>
+                                            <span>Transformer mes idées en projets concrets.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="journey-info-item">
+                                        <div class="journey-info-icon">◇</div>
+                                        <div>
+                                            <strong>Construire</strong>
+                                            <span>Développer des projets de plus en plus ambitieux.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="journey-info-item">
+                                        <div class="journey-info-icon">✧</div>
+                                        <div>
+                                            <strong>Progresser</strong>
+                                            <span>Apprendre de mes erreurs et améliorer ma pratique.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button id="journey-flip-back" type="button" class="journey-flip-button">
+                                    ← Retour
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPÉTENCES -->
+        <section class="section about-skills-section">
+            <div class="section-heading">
+                <p class="section-eyebrow">Mon arsenal</p>
+                <h2 class="section-title">Compétences</h2>
+                <p class="section-description">
+                    Les technologies et domaines que j'utilise ou que
+                    j'explore actuellement.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <article class="fantasy-card rounded-2xl p-6">
+                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-950 text-2xl">⚔️</div>
+                    <h3 class="text-xl font-bold">Programmation</h3>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="tag tag-sauge">Python</span>
+                        <span class="tag tag-sauge">C</span>
+                        <span class="tag tag-sauge">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="fantasy-card rounded-2xl p-6">
+                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-950 text-2xl">🏰</div>
+                    <h3 class="text-xl font-bold">Développement web</h3>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="tag tag-sauge">HTML</span>
+                        <span class="tag tag-sauge">CSS</span>
+                        <span class="tag tag-sauge">Tailwind CSS</span>
+                        <span class="tag tag-sauge">JavaScript</span>
+                    </div>
+                </article>
+
+                <article class="fantasy-card rounded-2xl p-6">
+                    <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-accent-950 text-2xl">🛠️</div>
+                    <h3 class="text-xl font-bold">Outils</h3>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="tag tag-pierre">Git</span>
+                        <span class="tag tag-pierre">GitHub</span>
+                        <span class="tag tag-pierre">VS Code</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CENTRES D'INTÉRÊT : cartes générées par about.js -->
+        <section class="section about-interests-section">
+            <div class="section-heading">
+                <p class="section-eyebrow">Hors du code</p>
+                <h2 class="section-title">Mes centres d'intérêt</h2>
+                <p class="section-description">
+                    Quelques univers et activités qui m'inspirent
+                    au quotidien.
+                </p>
+            </div>
+
+            <div id="interests-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+        </section>
+
+    </main>
+
+    <!-- Modale d'un centre d'intérêt -->
+    <div
+        id="interest-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center px-6"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+    >
+        <div class="relative w-full max-w-lg rounded-2xl p-8 shadow-2xl">
+            <button
+                id="close-modal"
+                type="button"
+                class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full text-xl"
+                aria-label="Fermer"
+            >
+                ×
+            </button>
+
+            <div id="modal-icon" class="mb-5 text-4xl"></div>
+            <h3 id="modal-title" class="text-2xl font-bold">Centre d'intérêt</h3>
+            <p id="modal-description" class="mt-4"></p>
+        </div>
+    </div>
+
+    <footer class="footer-dark border-t border-cuir-800 bg-cuir-900 dark:border-pierre-800 dark:bg-pierre-950">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-center md:flex-row md:text-left">
+            <div class="flex flex-col gap-1">
+                <p class="text-sm text-parchemin-400">© 2026 Chhoeum Brandon — Portfolio</p>
+                <p class="photo-credit text-sm text-parchemin-400">
+                    Photo d'en-tête : <a href="https://www.pexels.com/photo/rocky-landscape-with-a-mountain-stream-and-clouds-15575235/" target="_blank" rel="noopener noreferrer">Jozsef Mihalyi</a> sur Pexels
+                </p>
+            </div>
+            <a href={base} class="arrow-link">
+                Retour à l'accueil <span class="arrow">→</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        import "../scripts/about.js";
+    </script>
+</BaseLayout>

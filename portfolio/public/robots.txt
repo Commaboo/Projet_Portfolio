@@ -1,0 +1,5 @@
+# Autorise l'indexation de tout le portfolio
+User-agent: *
+Allow: /
+
+Sitemap: https://commaboo.github.io/Projet_Portfolio/sitemap.xml

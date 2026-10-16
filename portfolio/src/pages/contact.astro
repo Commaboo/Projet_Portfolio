@@ -1,0 +1,236 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/contact.css";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Contact | Brandon Chhoeum" description="Contactez Brandon Chhoeum, étudiant développeur web : e-mail, GitHub, LinkedIn, téléchargement du CV en PDF et formulaire de contact." preloadHero>
+    <Nav active="contact" />
+
+    <main>
+        <!-- HERO -->
+        <section class="relative flex h-[520px] items-center overflow-hidden">
+            <div
+                class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+                style={`background-image: url('${base}images/bg_hero_index.webp');`}
+                aria-hidden="true"
+            ></div>
+            <div class="absolute inset-0 bg-cuir-950/60" aria-hidden="true"></div>
+
+            <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24">
+                <div class="max-w-3xl">
+                    <div class="mb-6">
+                        <span class="badge badge-accent">✦ Une missive ?</span>
+                    </div>
+
+                    <h1 class="text-4xl font-bold leading-tight text-parchemin-50 sm:text-5xl md:text-6xl">
+                        Me contacter.
+                    </h1>
+
+                    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl">
+                        Une question, une idée de projet ou simplement envie
+                        d'échanger ? Ma boîte aux lettres est ouverte.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MOYENS DE CONTACT -->
+        <section class="section section-parchment">
+            <div class="section-heading">
+                <p class="section-eyebrow">Ma boîte aux lettres</p>
+                <h2 class="section-title">Où me trouver ?</h2>
+                <p class="section-description">
+                    Plusieurs moyens sont disponibles pour me contacter
+                    ou découvrir mon travail.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-3">
+                <article class="fantasy-card flex flex-col items-center rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 text-center shadow-md dark:border-pierre-700 dark:bg-pierre-900">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-accent-100 text-2xl dark:bg-accent-950">✉️</div>
+                    <h3 class="mt-5 text-xl font-bold">Email</h3>
+                    <p class="mt-3 text-sm text-cuir-600 dark:text-parchemin-300">
+                        Pour toute demande ou prise de contact.
+                    </p>
+                    <div class="mt-auto flex flex-col items-center gap-2 pt-4">
+                        <a href="mailto:brandon.chhoeum@epitech.eu" class="break-all font-semibold text-accent-700 hover:underline dark:text-accent-300">
+                            brandon.chhoeum@epitech.eu
+                        </a>
+                    </div>
+                </article>
+
+                <article class="fantasy-card flex flex-col items-center rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 text-center shadow-md dark:border-pierre-700 dark:bg-pierre-900">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-sauge-100 text-2xl dark:bg-sauge-950">📄</div>
+                    <h3 class="mt-5 text-xl font-bold">Mon CV</h3>
+                    <p class="mt-3 text-sm text-cuir-600 dark:text-parchemin-300">
+                        Disponible au format PDF.
+                    </p>
+                    <div class="mt-auto flex flex-col items-center gap-2 pt-4">
+                        <a
+                            href={`${base}documents/CV_CHHOEUM_Brandon.pdf`}
+                            download="CV-CHHOEUM_Brandon.pdf"
+                            class="font-semibold text-accent-700 hover:underline dark:text-accent-300"
+                        >
+                            Télécharger mon CV (PDF)
+                        </a>
+                    </div>
+                </article>
+
+                <article class="fantasy-card flex flex-col items-center rounded-2xl border border-cuir-300 bg-parchemin-100 p-6 text-center shadow-md dark:border-pierre-700 dark:bg-pierre-900">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-pierre-200 text-2xl dark:bg-pierre-800">⚔️</div>
+                    <h3 class="mt-5 text-xl font-bold">Réseaux</h3>
+                    <p class="mt-3 text-sm text-cuir-600 dark:text-parchemin-300">
+                        Retrouvez mes projets et mon parcours en ligne.
+                    </p>
+                    <div class="mt-auto flex flex-col items-center gap-2 pt-4">
+                        <a
+                            href="https://github.com/Commaboo"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="font-semibold text-accent-700 hover:underline dark:text-accent-300"
+                        >
+                            GitHub
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/brandon-chhoeum-81a5a62b0"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="font-semibold text-accent-700 hover:underline dark:text-accent-300"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FORMULAIRE DANS UN PARCHEMIN (ouvert / fermé par contact.js) -->
+        <section class="bg-sauge-50 dark:bg-pierre-900">
+            <div class="section">
+                <div class="mx-auto max-w-4xl text-center">
+                    <p class="section-eyebrow">Envoyer une missive</p>
+                    <h2 class="section-title">Écrivez-moi</h2>
+                    <p class="section-description">
+                        Ouvrez le parchemin et laissez-moi votre message.
+                    </p>
+
+                    <button id="scroll-open" type="button" class="btn btn-primary mt-8" aria-expanded="false" aria-controls="contact-parchment">
+                        Ouvrir le parchemin <span class="arrow">✦</span>
+                    </button>
+
+                    <div id="contact-parchment" class="parchment-sheet mx-auto mt-10 hidden max-w-3xl text-left">
+                        <div class="parchment-roll rounded-2xl border border-parchemin-500 bg-parchemin-100 p-6 shadow-2xl md:p-10 dark:border-pierre-700 dark:bg-pierre-800">
+                            <div class="mb-8 flex items-start justify-between gap-6">
+                                <div>
+                                    <p class="text-sm font-bold uppercase tracking-[0.2em] text-accent-700 dark:text-accent-300">Parchemin</p>
+                                    <h3 class="mt-2 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Votre message</h3>
+                                </div>
+
+                                <button
+                                    id="close-parchment"
+                                    type="button"
+                                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xl text-cuir-600 transition hover:bg-parchemin-200 hover:text-accent-600 dark:text-parchemin-300 dark:hover:bg-pierre-700"
+                                    aria-label="Fermer le parchemin"
+                                >
+                                    ×
+                                </button>
+                            </div>
+
+                            <form id="contact-form" class="space-y-6" action="https://formspree.io/f/mkjoqrpp" method="POST">
+                                <div>
+                                    <label for="name" class="mb-2 block font-semibold text-cuir-800 dark:text-parchemin-200">Votre nom</label>
+                                    <input
+                                        id="name"
+                                        name="name"
+                                        type="text"
+                                        autocomplete="name"
+                                        required
+                                        placeholder="Votre nom"
+                                        class="w-full rounded-lg border border-cuir-300 bg-parchemin-50 px-4 py-3 text-cuir-900 outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 dark:border-pierre-600 dark:bg-pierre-900 dark:text-parchemin-100"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label for="email" class="mb-2 block font-semibold text-cuir-800 dark:text-parchemin-200">Votre email</label>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        autocomplete="email"
+                                        required
+                                        placeholder="vous@exemple.com"
+                                        class="w-full rounded-lg border border-cuir-300 bg-parchemin-50 px-4 py-3 text-cuir-900 outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 dark:border-pierre-600 dark:bg-pierre-900 dark:text-parchemin-100"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label for="subject" class="mb-2 block font-semibold text-cuir-800 dark:text-parchemin-200">Sujet</label>
+                                    <input
+                                        id="subject"
+                                        name="subject"
+                                        type="text"
+                                        required
+                                        placeholder="Sujet de votre message"
+                                        class="w-full rounded-lg border border-cuir-300 bg-parchemin-50 px-4 py-3 text-cuir-900 outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 dark:border-pierre-600 dark:bg-pierre-900 dark:text-parchemin-100"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label for="message" class="mb-2 block font-semibold text-cuir-800 dark:text-parchemin-200">Votre message</label>
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows="7"
+                                        required
+                                        placeholder="Écrivez votre message..."
+                                        class="w-full resize-y rounded-lg border border-cuir-300 bg-parchemin-50 px-4 py-3 text-cuir-900 outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 dark:border-pierre-600 dark:bg-pierre-900 dark:text-parchemin-100"
+                                    ></textarea>
+                                </div>
+
+                                <p
+                                    id="form-message"
+                                    class="hidden rounded-lg border border-sauge-300 bg-sauge-50 p-4 text-sm font-semibold text-sauge-800 dark:border-sauge-700 dark:bg-sauge-950 dark:text-sauge-200"
+                                    role="status"
+                                ></p>
+
+                                <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                                    <button
+                                        id="close-parchment-bottom"
+                                        type="button"
+                                        class="btn border border-cuir-300 text-cuir-800 hover:bg-parchemin-200 dark:border-pierre-600 dark:text-parchemin-200 dark:hover:bg-pierre-700"
+                                    >
+                                        Fermer
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Envoyer la missive <span class="arrow">→</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-light border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-center md:flex-row md:text-left">
+            <div class="flex flex-col gap-1">
+                <p class="text-sm text-cuir-800 dark:text-parchemin-400">© 2026 Chhoeum Brandon — Portfolio</p>
+                <p class="photo-credit text-sm text-cuir-800 dark:text-parchemin-400">
+                    Photo d'en-tête : <a href="https://www.pexels.com/photo/rocky-landscape-with-a-mountain-stream-and-clouds-15575235/" target="_blank" rel="noopener noreferrer">Jozsef Mihalyi</a> sur Pexels
+                </p>
+            </div>
+            <a href={base} class="arrow-link">
+                Retour à l'accueil <span class="arrow">→</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        import "../scripts/contact.js";
+    </script>
+</BaseLayout>

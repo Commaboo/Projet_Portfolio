@@ -1,0 +1,43 @@
+---
+/* NAVIGATION PRINCIPALE — le menu mobile et le thème sont gérés par scripts/main.js */
+interface Props {
+    active: "home" | "about" | "projects" | "wip" | "contact";
+}
+
+const { active } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const links = [
+    { id: "home", href: base, label: "Accueil" },
+    { id: "about", href: `${base}about/`, label: "À propos" },
+    { id: "projects", href: `${base}projects/`, label: "Projets" },
+    { id: "wip", href: `${base}wip/`, label: "Rôle & Fairies" },
+    { id: "contact", href: `${base}contact/`, label: "Contact" },
+];
+---
+
+<nav class="site-nav" aria-label="Navigation principale">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href={base} class="text-xl font-bold tracking-wide text-parchemin-100 transition-colors hover:text-accent-300">
+            ✦ Mon Portfolio
+        </a>
+
+        <div class="hidden items-center gap-8 md:flex">
+            {links.map((link) => (
+                <a href={link.href} class:list={["nav-link", { "nav-link-active": link.id === active }]} aria-current={link.id === active ? "page" : undefined}>{link.label}</a>
+            ))}
+            <button type="button" class="nav-button" data-theme-toggle aria-label="Activer le thème sombre">🌙</button>
+        </div>
+
+        <div class="flex items-center gap-2 md:hidden">
+            <button type="button" class="nav-button" data-theme-toggle aria-label="Activer le thème sombre">🌙</button>
+            <button id="menu-button" type="button" class="nav-button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden flex-col gap-4 border-t border-parchemin-100/10 px-6 py-5 md:hidden">
+        {links.map((link) => (
+            <a href={link.href} class:list={["nav-link", { "nav-link-active": link.id === active }]} aria-current={link.id === active ? "page" : undefined}>{link.label}</a>
+        ))}
+    </div>
+</nav>

@@ -1,29 +1,23 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Portfolio personnel de Brandon Chhoeum — HTML, Tailwind CSS, JavaScript et React",
+  "description": "Portfolio personnel de Brandon Chhoeum — Astro, Tailwind CSS et React",
   "license": "ISC",
   "author": "Brandon Chhoeum",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "dev": "concurrently -n css,react -c yellow,cyan \"npm:dev:css\" \"npm:dev:react\"",
-    "dev:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch",
-    "dev:react": "vite build --watch --mode development",
-    "build": "npm run build:css && npm run build:react",
-    "build:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --minify",
-    "build:react": "vite build",
-    "serve": "npx --yes http-server . -p 8080 -c-1",
-    "test": "npm run build:react && node tests/run-tests.mjs"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "astro build && node tests/run-tests.mjs"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@astrojs/react": "^7.1.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.2",
-    "concurrently": "^10.0.6",
-    "vite": "^8.3.4"
   }
 }
