@@ -1,19 +1,29 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Portfolio personnel de Brandon Chhoeum — HTML, Tailwind CSS et JavaScript",
+  "description": "Portfolio personnel de Brandon Chhoeum — HTML, Tailwind CSS, JavaScript et React",
   "license": "ISC",
   "author": "Brandon Chhoeum",
   "type": "commonjs",
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch",
-    "build": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --minify",
+    "dev": "concurrently -n css,react -c yellow,cyan \"npm:dev:css\" \"npm:dev:react\"",
+    "dev:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --watch",
+    "dev:react": "vite build --watch --mode development",
+    "build": "npm run build:css && npm run build:react",
+    "build:css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/output.css --minify",
+    "build:react": "vite build",
     "serve": "npx --yes http-server . -p 8080 -c-1",
-    "test": "node tests/run-tests.mjs"
+    "test": "npm run build:react && node tests/run-tests.mjs"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "vite": "^8.3.4"
+  }
 }

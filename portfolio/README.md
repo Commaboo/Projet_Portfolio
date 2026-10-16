@@ -1,6 +1,6 @@
 # Portfolio — Brandon Chhoeum
 
-Portfolio personnel d'un étudiant en informatique (EPITECH Toulouse), construit en **HTML, Tailwind CSS et JavaScript**, avec une identité visuelle inspirée de la fantasy et du jeu de rôle.
+Portfolio personnel d'un étudiant en informatique (EPITECH Toulouse), construit en **HTML, Tailwind CSS et JavaScript**, avec une identité visuelle inspirée de la fantasy et du jeu de rôle. Les parties les plus interactives sont des « îlots » **React**.
 
 ## Pages
 
@@ -26,7 +26,10 @@ portfolio/
 ├── src/
 │   ├── css/          input.css + components.css → output.css (généré par Tailwind)
 │   │                 about.css, contact.css, projects.css, wip.css (une feuille par page)
-│   ├── js/           main.js (thème, menu mobile, apparitions), about.js, contact.js, projects.js, wip.js
+│   ├── js/           main.js (thème, menu mobile, apparitions), about.js, contact.js, wip.js
+│   │   └── dist/     bundle React généré par Vite (non versionné)
+│   ├── react/
+│   │   └── projects/ bureau du mage en React (data.js + composants)
 │   ├── pages/        about, contact, projects, wip
 │   └── projet/resume CV interactif
 ├── tests/            run-tests.mjs (tests automatisés)
@@ -37,16 +40,18 @@ portfolio/
 
 ```bash
 npm install
-npm run dev      # recompile output.css à chaque modification
-npm run serve    # sert le site sur http://localhost:8080
+npm run dev      # recompile output.css ET le bundle React à chaque modification
+npm run serve    # (2e terminal) sert le site sur http://localhost:8080
 ```
+
+> La page Projets charge `src/js/dist/projects-app.js`, généré par Vite. Sans `npm run dev` ou `npm run build`, le bureau du mage reste vide.
 
 > `src/css/output.css` est **généré** par Tailwind : ne pas le modifier à la main. Les styles communs se modifient dans `components.css`, ceux d'une page dans sa propre feuille.
 
 ## Build
 
 ```bash
-npm run build    # output.css minifié
+npm run build    # output.css minifié + bundle React (vite build)
 ```
 
 ## Tests
@@ -70,7 +75,9 @@ Après le premier déploiement, remplacer l'adresse provisoire `https://commaboo
 ## Choix techniques
 
 - **Tailwind CSS v4 (utility-first)** : grande liberté graphique et responsive rapide ; les composants répétés (boutons, badges, cartes, navigation) sont regroupés dans `components.css` avec `@apply`.
-- **JavaScript sans framework** : suffisant pour la V1 (thème, menu, modales, registre de projets) et conforme au périmètre du cahier des charges. React, Astro et Three.js sont prévus pour les versions suivantes.
+- **JavaScript sans framework** pour les fonctionnalités communes (thème, menu mobile, apparitions) et les pages simples.
+- **React en « îlots » (Vite)** : seule la zone `<section id="projects-root">` de la page Projets est rendue par React. Un état unique (`selectedId`, `registryOpen`, `detail`) pilote l'affichage, ce qui évite les désynchronisations entre HTML et JavaScript. Le reste du site reste en HTML statique. Les IDs et classes sont identiques à la version précédente : `projects.css` et les tests n'ont pas changé.
+- **Ajouter un îlot React** : créer `src/react/<nom>/main.jsx`, l'ajouter dans `rollupOptions.input` de `vite.config.mjs`, puis charger `../js/dist/<nom>.js` avec `type="module"` dans la page.
 - **Thème sombre** : classe `dark` sur `<html>`, appliquée dans le `<head>` avant l'affichage pour éviter un flash clair, choix mémorisé dans `localStorage`.
 - **Image d'en-tête en WebP** (116 Ko au lieu de 1,16 Mo en JPEG), préchargée en priorité.
 - **Formulaire** : traité par Formspree, le site restant 100 % front-end.

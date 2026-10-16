@@ -96,102 +96,13 @@
                 </div>
             </section>
 
-            <!-- BUREAU DU MAGE -->
-            <section class="mage-workspace">
-                <div class="mage-desk">
-                    <div class="desk-glow" aria-hidden="true"></div>
-
-                    <div class="desk-object desk-candle" aria-hidden="true">🕯️</div>
-                    <div class="desk-object desk-inkwell" aria-hidden="true">🖋️</div>
-                    <div class="desk-object desk-hat" aria-hidden="true">🎩</div>
-
-                    <article
-                        id="project-scroll"
-                        class="project-scroll"
-                        aria-live="polite"
-                        aria-label="Détails du projet sélectionné"
-                    >
-                        <div id="project-empty" class="project-empty">
-                            <span class="project-empty-icon" aria-hidden="true">✦</span>
-                            <h2>Choisis ton aventure</h2>
-                            <p>
-                                Clique sur un projet dans le registre ou glisse-le
-                                sur le parchemin pour découvrir son histoire.
-                            </p>
-                        </div>
-
-                        <div id="project-content" class="scroll-content hidden">
-                            <div class="project-header">
-                                <div>
-                                    <p id="project-status" class="project-status"></p>
-                                    <h2 id="project-title">Projet</h2>
-                                    <p id="project-period" class="project-period"></p>
-                                </div>
-                                <span class="project-seal" aria-hidden="true">✦</span>
-                            </div>
-
-                            <div class="project-preview">
-                                <div id="project-image" class="project-magic-card magic-theme-ember" aria-hidden="true"></div>
-                            </div>
-
-                            <p id="project-description" class="project-description"></p>
-                            <div id="project-technologies" class="project-tags"></div>
-
-                            <div class="project-actions">
-                                <button type="button" class="btn btn-primary project-action" data-action="journey">
-                                    Parcours
-                                </button>
-                                <button type="button" class="btn btn-secondary project-action" data-action="skills">
-                                    Compétences
-                                </button>
-                                <button type="button" class="btn btn-secondary project-action" data-action="preview">
-                                    Preview
-                                </button>
-                            </div>
-
-                            <div id="project-detail" class="project-detail hidden">
-                                <div class="project-detail-header">
-                                    <h3 id="detail-title">Parcours</h3>
-                                    <button id="close-detail" type="button" aria-label="Fermer les détails">×</button>
-                                </div>
-                                <div id="detail-content"></div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <button
-                        id="github-cat"
-                        class="github-cat"
-                        type="button"
-                        aria-label="Voir le GitHub du projet"
-                    >
-                        🐈‍⬛
-                    </button>
-
-                    <aside class="project-registry">
-                        <button
-                            id="registry-toggle"
-                            class="registry-header"
-                            type="button"
-                            aria-expanded="false"
-                            aria-controls="project-list"
-                        >
-                            <span>
-                                <span class="registry-label">Registre</span>
-                                <span class="registry-subtitle">Mes projets</span>
-                            </span>
-                            <span id="registry-arrow" class="registry-arrow" aria-hidden="true">↓</span>
-                        </button>
-
-                        <div id="project-list" class="project-list" role="group" aria-label="Liste des projets"></div>
-
-                        <p id="drop-hint" class="drop-hint">
-                            Dépose un projet sur le parchemin
-                        </p>
-                    </aside>
-
-                    <div id="github-message" class="github-message hidden" role="status"></div>
-                </div>
+            <!-- BUREAU DU MAGE : rendu par React (src/react/projects/) -->
+            <section id="projects-root" class="mage-workspace">
+                <noscript>
+                    <p class="project-empty">
+                        Active JavaScript pour ouvrir le registre et découvrir mes projets.
+                    </p>
+                </noscript>
             </section>
         </main>
 
@@ -210,6 +121,7 @@
         </footer>
 
         <script src="../js/main.js"></script>
-        <script src="../js/projects.js"></script>
+        <!-- Bundle généré par « npm run build:react » (voir vite.config.mjs) -->
+        <script type="module" src="../js/dist/projects-app.js"></script>
     </body>
 </html>
