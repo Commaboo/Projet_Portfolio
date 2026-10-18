@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/projects.css";
+import ProjectsDesk from "../react/projects/ProjectsDesk.jsx";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Projets | Brandon Chhoeum" description="Les projets de Brandon Chhoeum : CV interactif, parcours Python avec Pygame, Rôle & Fairies et ce portfolio, présentés sur un bureau de mage interactif." preloadHero>
+    <Nav active="projects" />
+
+    <main>
+        <!-- HERO -->
+        <section class="projects-hero relative flex h-[520px] items-center overflow-hidden">
+            <div
+                class="absolute inset-0 scale-105 bg-cover bg-center blur-[3px]"
+                style={`background-image: url('${base}images/bg_hero_index.webp');`}
+                aria-hidden="true"
+            ></div>
+
+            <div class="absolute inset-0 bg-cuir-950/60" aria-hidden="true"></div>
+
+            <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-24">
+                <div class="max-w-3xl">
+                    <div class="mb-6">
+                        <span class="badge badge-accent">✦ Mes aventures</span>
+                    </div>
+
+                    <h1 class="text-4xl font-bold leading-tight text-parchemin-50 sm:text-5xl md:text-6xl">
+                        Projets &amp; réalisations.
+                    </h1>
+
+                    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-parchemin-200 md:text-xl">
+                        Retrouvez les projets qui représentent mon parcours, mes apprentissages et les technologies que j'explore au fil de mes aventures.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUREAU DU MAGE : rendu par React (src/react/projects/) -->
+        <section id="projects-root" class="mage-workspace">
+            <ProjectsDesk client:load />
+        </section>
+    </main>
+
+    <footer class="footer-light border-t border-cuir-200 bg-parchemin-600 dark:border-pierre-800 dark:bg-pierre-950">
+        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 text-center md:flex-row md:text-left">
+            <div class="flex flex-col gap-1">
+                <p class="text-sm text-cuir-800 dark:text-parchemin-400">© 2026 Chhoeum Brandon — Portfolio</p>
+                <p class="photo-credit text-sm text-cuir-800 dark:text-parchemin-400">
+                    Photo d'en-tête : <a href="https://www.pexels.com/photo/rocky-landscape-with-a-mountain-stream-and-clouds-15575235/" target="_blank" rel="noopener noreferrer">Jozsef Mihalyi</a> sur Pexels
+                </p>
+            </div>
+            <a href={base} class="arrow-link">
+                Retour à l'accueil <span class="arrow">→</span>
+            </a>
+        </div>
+    </footer>
+</BaseLayout>

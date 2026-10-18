@@ -9,7 +9,7 @@ export const projects = [
         period: "Septembre 2026",
         description: "J'ai voulu transformer un CV classique en une expérience web plus interactive. J'ai travaillé sur sa structure, son apparence et différentes interactions pour rendre la présentation plus dynamique.",
         image: null,
-        previewUrl: "../projet/resume/resume.html",
+        previewUrl: `${import.meta.env.BASE_URL}projet/resume/`,
         technologies: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
         journey: "J'ai réalisé ce projet dans le cadre scolaire puis je l'ai intégré à mon portfolio. Mon objectif était de transformer un CV traditionnel en une expérience web interactive, en travaillant à la fois sur la structure, le design et les interactions.",
         skills: ["JavaScript", "Manipulation du DOM", "Modales", "Barres de progression", "Tailwind CSS", "HTML / CSS", "Organisation d'un projet web", "Interfaces interactives"],
@@ -52,6 +52,6 @@ export const projects = [
         technologies: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
         journey: "J'ai créé ce portfolio pour construire ma première véritable identité dans le web et montrer ce que j'apprends et ce que je suis capable de réaliser. C'est aussi pour moi un terrain d'expérimentation autour du design, du développement et de l'organisation d'un projet web.",
         skills: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "Responsive design", "Organisation d'un projet web", "Conception d'interfaces", "Identité visuelle", "Architecture HTML / CSS / JS"],
-        github: null
+        github: "https://github.com/Commaboo/Projet_Portfolio"
     }
 ];

@@ -1,0 +1,68 @@
+---
+/* =========================================================
+   LAYOUT COMMUN — <head>, SEO, thème et scripts partagés
+   La navigation (Nav.astro) et le pied de page restent dans chaque page.
+   ========================================================= */
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description: string;
+    bodyClass?: string;
+    // Précharge l'image d'en-tête quand la page l'affiche dans son hero.
+    preloadHero?: boolean;
+}
+
+const { title, description, bodyClass, preloadHero = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="author" content="Brandon Chhoeum" />
+        <meta name="theme-color" content="#49332b" />
+        <link rel="canonical" href={canonical} />
+
+        <!-- Aperçu lors d'un partage (Open Graph) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="Brandon Chhoeum — Portfolio" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta name="twitter:card" content="summary" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" sizes="32x32" href={`${base}icons/favicon-32.png`} />
+        <link rel="apple-touch-icon" href={`${base}icons/apple-touch-icon.png`} />
+
+        <!-- Image d'en-tête chargée en priorité (meilleur temps d'affichage) -->
+        {preloadHero && (
+            <link rel="preload" as="image" href={`${base}images/bg_hero_index.webp`} type="image/webp" fetchpriority="high" />
+        )}
+
+        <!-- Applique le thème mémorisé avant l'affichage pour éviter un flash clair -->
+        <script is:inline>
+            try {
+                if (localStorage.getItem("portfolio-theme") === "dark") {
+                    document.documentElement.classList.add("dark");
+                }
+            } catch (error) {}
+        </script>
+    </head>
+
+    <body class={bodyClass}>
+        <slot />
+
+        <script>
+            import "../scripts/main.js";
+        </script>
+    </body>
+</html>

@@ -1,0 +1,443 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="CV interactif | Brandon Chhoeum" description="CV interactif de Brandon Chhoeum, étudiant en informatique à EPITECH Toulouse : profil, compétences, expériences, formation et contact.">
+    <header class="fixed left-0 top-0 z-50 w-full border-b border-cuir-700/20 bg-cuir-800/95 backdrop-blur-md">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8" aria-label="Navigation du CV">
+            <a
+                href="#accueil"
+                class="flex h-11 w-11 items-center justify-center rounded-full border-2 border-accent-500 text-lg font-bold text-parchemin-100 transition duration-300 hover:rotate-6 hover:bg-accent-500"
+            >
+                CB
+            </a>
+
+            <!-- Liens : en ligne sur grand écran, menu déroulant sur mobile (js/main.js) -->
+            <ul id="nav-links" class="hidden items-center gap-8 md:flex">
+                <li><a href={base} class="text-sm text-parchemin-100 transition hover:text-accent-400">Portfolio</a></li>
+                <li><a href="#profil" class="text-sm text-parchemin-100 transition hover:text-accent-400">Profil</a></li>
+                <li><a href="#competences" class="text-sm text-parchemin-100 transition hover:text-accent-400">Compétences</a></li>
+                <li><a href="#experience" class="text-sm text-parchemin-100 transition hover:text-accent-400">Expériences</a></li>
+                <li><a href="#formation" class="text-sm text-parchemin-100 transition hover:text-accent-400">Formation</a></li>
+                <li>
+                    <a href="#contact" class="rounded-full bg-accent-500 px-5 py-2 text-sm font-bold text-cuir-950 transition duration-300 hover:scale-105 hover:bg-accent-400">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+            <div class="flex items-center gap-2">
+                <button
+                    type="button"
+                    data-theme-toggle
+                    class="rounded-full border border-parchemin-500/30 px-3 py-2 text-parchemin-100 transition hover:bg-parchemin-500/20"
+                    aria-label="Activer le thème sombre"
+                >
+                    🌙
+                </button>
+
+                <button
+                    id="cv-menu-button"
+                    type="button"
+                    class="rounded-lg border border-parchemin-500/30 px-3 py-2 text-xl text-parchemin-100 md:hidden"
+                    aria-label="Ouvrir le menu"
+                    aria-expanded="false"
+                    aria-controls="nav-links"
+                >
+                    ☰
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ACCUEIL -->
+        <section id="accueil" class="relative flex min-h-screen items-center overflow-hidden bg-cuir-800 px-5 pt-24 text-parchemin-100">
+            <div class="absolute -right-20 top-32 h-72 w-72 rounded-full border border-sauge-500/30" aria-hidden="true"></div>
+            <div class="rotate-slow absolute -right-10 top-44 h-52 w-52 rounded-full border border-accent-500/30" aria-hidden="true"></div>
+            <div class="float absolute bottom-20 left-10 h-16 w-16 rotate-45 border border-sauge-500/30" aria-hidden="true"></div>
+
+            <div class="relative mx-auto w-full max-w-7xl">
+                <div class="max-w-4xl">
+                    <p class="reveal mb-5 font-sans text-sm font-bold uppercase tracking-[0.3em] text-accent-300">Curriculum Vitae</p>
+
+                    <h1 class="reveal text-5xl font-bold leading-none tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+                        CHHOEUM
+                        <span class="block text-accent-500">BRANDON</span>
+                    </h1>
+
+                    <div class="reveal mt-7 flex items-center gap-4">
+                        <span class="h-px w-16 bg-accent-500"></span>
+                        <p class="font-sans text-lg text-parchemin-300 sm:text-xl">Futur professionnel de l'informatique</p>
+                    </div>
+
+                    <p class="reveal mt-8 max-w-2xl font-sans text-base leading-8 text-parchemin-300 sm:text-lg">
+                        Passionné par les technologies et la science,
+                        actuellement étudiant informatique à l'EPITECH Toulouse et
+                        diplômé d'une licence de biologie.
+                    </p>
+
+                    <div class="reveal mt-10 flex flex-col gap-4 sm:flex-row">
+                        <a
+                            href="#experience"
+                            class="group inline-flex items-center justify-center gap-3 rounded-full bg-accent-500 px-7 py-4 font-sans font-bold text-cuir-950 transition duration-300 hover:-translate-y-1 hover:bg-accent-400"
+                        >
+                            Découvrir mon parcours <span class="arrow">→</span>
+                        </a>
+                        <a
+                            href="#contact"
+                            class="inline-flex items-center justify-center rounded-full border border-parchemin-300/40 px-7 py-4 font-sans font-bold text-parchemin-100 transition duration-300 hover:-translate-y-1 hover:border-accent-400 hover:text-accent-400"
+                        >
+                            Me contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFIL -->
+        <section id="profil" class="px-5 py-24 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="reveal mb-14">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-800 dark:text-accent-300">01 — Profil</p>
+                    <h2 class="mt-3 text-4xl font-bold text-cuir-800 sm:text-5xl dark:text-parchemin-100">Qui suis-je ?</h2>
+                    <div class="mt-5 h-1 w-20 bg-accent-500"></div>
+                </div>
+
+                <div class="grid gap-8 md:grid-cols-2">
+                    <article class="fantasy-card reveal rounded-2xl border border-parchemin-300 bg-parchemin-100 p-7 shadow-sm md:p-9 dark:border-pierre-700 dark:bg-pierre-900">
+                        <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-cuir-800 text-xl text-accent-300">✦</div>
+                        <h3 class="mb-5 text-3xl font-bold text-cuir-800 dark:text-parchemin-100">À propos de moi</h3>
+                        <p class="font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                            Passionné par les nouvelles technologies et actuellement
+                            étudiant en informatique après une
+                            licence de biologie.
+                        </p>
+                        <p class="mt-5 font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                            Je recherche une alternance pour mettre en
+                            pratique mes compétences en développement
+                            informatique. Mon parcours en biologie et mon
+                            expérience en restauration témoignent de mon
+                            adaptabilité, de ma rigueur et de mon sens du
+                            service ainsi que d'un fort esprit d'équipe.
+                        </p>
+                    </article>
+
+                    <article class="fantasy-card reveal rounded-2xl border border-parchemin-300 bg-cuir-800 p-7 text-parchemin-100 shadow-sm md:p-9 dark:border-pierre-700">
+                        <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-accent-500 text-xl text-cuir-950">⚔</div>
+                        <h3 class="mb-6 text-3xl font-bold">Mes Soft Skills</h3>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Travail d'équipe</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Autonomie</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Communication</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Précision</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Initiative</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Dynamique</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">À l'écoute</span>
+                            <span class="rounded-lg border border-parchemin-300/20 bg-cuir-700 px-4 py-3 font-sans text-sm transition duration-150 hover:border-parchemin-950/20 hover:bg-cuir-400 hover:text-cuir-900">Adaptabilité</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPÉTENCES -->
+        <section id="competences" class="bg-cuir-800 px-5 py-24 text-parchemin-100 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="reveal mb-14">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-300">02 — Compétences</p>
+                    <h2 class="mt-3 text-4xl font-bold sm:text-5xl">Mes compétences</h2>
+                    <div class="mt-5 h-1 w-20 bg-accent-500"></div>
+                </div>
+
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <article class="fantasy-card reveal rounded-2xl border border-parchemin-300/10 bg-cuir-700 p-7">
+                        <div class="mb-6 text-3xl text-accent-300">&lt;/&gt;</div>
+                        <h3 class="mb-6 text-3xl font-bold">Informatique</h3>
+
+                        <div class="space-y-5">
+                            <div class="mb-2 flex justify-between font-sans text-sm">
+                                <span>Python</span>
+                                <span class="text-accent-300">Intermédiaire</span>
+                            </div>
+                            <div class="mb-2 flex justify-between font-sans text-sm">
+                                <span>HTML / JavaScript / PHP</span>
+                                <span class="text-accent-300">Début d'apprentissage</span>
+                            </div>
+                        </div>
+
+                        <ul class="mt-7 space-y-3 font-sans text-sm text-parchemin-300">
+                            <li>• Création de petits jeux</li>
+                            <li>• Logiciel de mixage de musique</li>
+                            <li>• Codage front-end et backend basique</li>
+                        </ul>
+                    </article>
+
+                    <article class="fantasy-card reveal rounded-2xl border border-parchemin-300/10 bg-cuir-700 p-7">
+                        <div class="mb-6 text-3xl text-sauge-400">◈</div>
+                        <h3 class="mb-6 text-3xl font-bold">Autres compétences</h3>
+
+                        <ul class="space-y-5 font-sans text-parchemin-300">
+                            <li class="border-b border-parchemin-300/10 pb-4">Orienter les clients selon leurs demandes</li>
+                            <li class="border-b border-parchemin-300/10 pb-4">Communication avec une équipe</li>
+                            <li>Bonne gestion de stress / pression</li>
+                        </ul>
+                    </article>
+
+                    <article class="fantasy-card reveal rounded-2xl border border-parchemin-300/10 bg-cuir-700 p-7">
+                        <div class="mb-6 text-3xl text-sauge-400">✧</div>
+                        <h3 class="mb-8 text-3xl font-bold">Langues</h3>
+
+                        <div class="space-y-8">
+                            <div>
+                                <div class="mb-2 flex justify-between font-sans">
+                                    <span>Anglais</span>
+                                    <span class="text-accent-300">C1/C2</span>
+                                </div>
+                                <div class="h-2 rounded-full bg-cuir-900">
+                                    <div class="h-2 w-[95%] rounded-full bg-sauge-500"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="mb-2 flex justify-between font-sans">
+                                    <span>Espagnol</span>
+                                    <span class="text-accent-300">B2</span>
+                                </div>
+                                <div class="h-2 rounded-full bg-cuir-900">
+                                    <div class="h-2 w-[60%] rounded-full bg-sauge-500"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPÉRIENCES -->
+        <section id="experience" class="px-5 py-24 lg:px-8">
+            <div class="mx-auto max-w-5xl">
+                <div class="reveal mb-14">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-800 dark:text-accent-300">03 — Expériences</p>
+                    <h2 class="mt-3 text-4xl font-bold text-cuir-800 sm:text-5xl dark:text-parchemin-100">Mon parcours professionnel</h2>
+                    <div class="mt-5 h-1 w-20 bg-accent-500"></div>
+                </div>
+
+                <div class="relative ml-3 border-l-2 border-parchemin-300 pl-8 dark:border-pierre-700">
+                    <article class="reveal relative mb-12">
+                        <div class="absolute -left-10.5 top-2 h-5 w-5 rounded-full border-4 border-parchemin-50 bg-accent-500 dark:border-pierre-950"></div>
+                        <div class="fantasy-card rounded-2xl border border-parchemin-300 bg-parchemin-100 p-7 dark:border-pierre-700 dark:bg-pierre-900">
+                            <span class="font-sans text-sm font-bold text-accent-800 dark:text-accent-300">Février 2025 — Juin 2026</span>
+                            <h3 class="mt-2 text-2xl font-bold text-cuir-800 dark:text-parchemin-100">Employé polyvalent en restauration</h3>
+                            <h4 class="mt-1 font-sans font-semibold text-pierre-600 dark:text-pierre-300">Dupont Restauration — Toulouse 31100</h4>
+                            <ul class="mt-5 space-y-2 font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                                <li>• Préparation des entrées et plats chauds</li>
+                                <li>• Nettoyage du poste de travail</li>
+                                <li>• Service en collectivité ou à l'assiette</li>
+                                <li>• Respect des règles d'hygiène</li>
+                                <li>• Prise en charge des encaissements</li>
+                                <li>• Gestion du stock</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="reveal relative mb-12">
+                        <div class="absolute -left-10.5 top-2 h-5 w-5 rounded-full border-4 border-parchemin-50 bg-accent-500 dark:border-pierre-950"></div>
+                        <div class="fantasy-card rounded-2xl border border-parchemin-300 bg-parchemin-100 p-7 dark:border-pierre-700 dark:bg-pierre-900">
+                            <span class="font-sans text-sm font-bold text-accent-800 dark:text-accent-300">Mars 2024 — Février 2025</span>
+                            <h3 class="mt-2 text-2xl font-bold text-cuir-800 dark:text-parchemin-100">Employé de restauration</h3>
+                            <h4 class="mt-1 font-sans font-semibold text-pierre-600 dark:text-pierre-300">ADECCO — Toulouse 31000</h4>
+                            <ul class="mt-5 space-y-2 font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                                <li>• Préparation des entrées et plats chauds</li>
+                                <li>• Service en autonomie</li>
+                                <li>• Nettoyage de la plonge et de la salle</li>
+                                <li>• Respect des règles d'hygiène</li>
+                                <li>• Encaissement</li>
+                                <li>• Gestion des vitrines et du stock</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="reveal relative mb-12">
+                        <div class="absolute -left-10.5 top-2 h-5 w-5 rounded-full border-4 border-parchemin-50 bg-accent-500 dark:border-pierre-950"></div>
+                        <div class="fantasy-card rounded-2xl border border-parchemin-300 bg-parchemin-100 p-7 dark:border-pierre-700 dark:bg-pierre-900">
+                            <span class="font-sans text-sm font-bold text-accent-800 dark:text-accent-300">Juillet 2024 — Août 2024</span>
+                            <h3 class="mt-2 text-2xl font-bold text-cuir-800 dark:text-parchemin-100">Vendeur saisonnier</h3>
+                            <h4 class="mt-1 font-sans font-semibold text-pierre-600 dark:text-pierre-300">La Ramée — Tournefeuille 31170</h4>
+                            <ul class="mt-5 space-y-2 font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                                <li>• Vente de produits alimentaires</li>
+                                <li>• Préparation de snacks et repas</li>
+                                <li>• Accueil des clients</li>
+                                <li>• Prise de commandes</li>
+                                <li>• Gestion des stocks</li>
+                                <li>• Encaissement des clients</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="reveal relative">
+                        <div class="absolute -left-10.5 top-2 h-5 w-5 rounded-full border-4 border-parchemin-50 bg-accent-500 dark:border-pierre-950"></div>
+                        <div class="fantasy-card rounded-2xl border border-parchemin-300 bg-parchemin-100 p-7 dark:border-pierre-700 dark:bg-pierre-900">
+                            <span class="font-sans text-sm font-bold text-accent-800 dark:text-accent-300">Expérience commerciale</span>
+                            <h3 class="mt-2 text-2xl font-bold text-cuir-800 dark:text-parchemin-100">Service direct</h3>
+                            <h4 class="mt-1 font-sans font-semibold text-pierre-600 dark:text-pierre-300">One Step Marketing — Toulouse 31200</h4>
+                            <ul class="mt-5 space-y-2 font-sans leading-7 text-pierre-700 dark:text-pierre-200">
+                                <li>• Service direct en porte-à-porte</li>
+                                <li>• Explications claires sur un produit</li>
+                                <li>• Communication en équipe</li>
+                                <li>• Autonomie dans la recherche de clients</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMATION -->
+        <section id="formation" class="bg-sauge-100 px-5 py-24 lg:px-8 dark:bg-pierre-900">
+            <div class="mx-auto max-w-7xl">
+                <div class="reveal mb-14">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-800 dark:text-accent-300">04 — Formation</p>
+                    <h2 class="mt-3 text-4xl font-bold text-cuir-800 sm:text-5xl dark:text-parchemin-100">Formation</h2>
+                    <div class="mt-5 h-1 w-20 bg-accent-500"></div>
+                </div>
+
+                <article class="fantasy-card reveal rounded-2xl border border-sauge-300 bg-parchemin-50 p-8 md:p-10 dark:border-pierre-700 dark:bg-pierre-950">
+                    <div class="grid gap-8 md:grid-cols-[120px_1fr]">
+                        <div class="flex h-24 w-24 items-center justify-center rounded-full bg-cuir-800 text-3xl text-accent-300">🎓</div>
+                        <div>
+                            <span class="font-sans font-bold text-accent-800 dark:text-accent-300">2020 — 2024</span>
+                            <h3 class="mt-2 text-2xl font-bold text-cuir-800 sm:text-3xl dark:text-parchemin-100">Licence 3</h3>
+                            <p class="mt-2 font-sans text-lg text-pierre-700 dark:text-pierre-200">Biologie cellulaire et physiologie</p>
+                            <p class="mt-4 font-sans text-pierre-600 dark:text-pierre-300">Université III Paul Sabatier — Toulouse</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- CENTRES D'INTÉRÊT -->
+        <section class="px-5 py-24 lg:px-8">
+            <div class="mx-auto max-w-7xl">
+                <div class="reveal mb-12">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-800 dark:text-accent-300">05 — Personnel</p>
+                    <h2 class="mt-3 text-4xl font-bold text-cuir-800 dark:text-parchemin-100">Centres d'intérêt</h2>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                    <div class="fantasy-card rounded-xl bg-cuir-800 p-6 text-center text-parchemin-100">🎮<p class="mt-3 font-sans text-lg">Jeux</p></div>
+                    <div class="fantasy-card rounded-xl bg-sauge-700 p-6 text-center text-parchemin-100">♟<p class="mt-3 font-sans text-lg">Stratégie</p></div>
+                    <div class="fantasy-card rounded-xl bg-accent-500 p-6 text-center text-cuir-950">🎭<p class="mt-3 font-sans text-lg">Improvisation</p></div>
+                    <div class="fantasy-card rounded-xl bg-cuir-700 p-6 text-center text-parchemin-100">📚<p class="mt-3 font-sans text-lg">Lecture</p></div>
+                    <div class="fantasy-card rounded-xl bg-sauge-600 p-6 text-center text-parchemin-100">🍳<p class="mt-3 font-sans text-lg">Cuisine</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="bg-cuir-800 px-5 py-24 text-parchemin-100 lg:px-8">
+            <div class="mx-auto max-w-5xl">
+                <div class="reveal mb-12 text-center">
+                    <p class="font-sans text-sm font-bold uppercase tracking-[0.25em] text-accent-300">06 — Contact</p>
+                    <h2 class="mt-3 text-4xl font-bold sm:text-5xl">Si vous voulez me contacter</h2>
+                    <p class="mx-auto mt-5 max-w-2xl font-sans leading-7 text-parchemin-300">
+                        Vous pouvez me contacter directement ou utiliser
+                        le formulaire ci-dessous.
+                    </p>
+                </div>
+
+                <div class="grid gap-10 md:grid-cols-2">
+                    <div class="reveal space-y-5">
+                        <div class="rounded-xl border border-parchemin-300/10 bg-cuir-600 p-5">
+                            <p class="font-sans text-xs uppercase tracking-widest text-parchemin-200">Téléphone</p>
+                            <a href="tel:0781251004" class="mt-2 block font-sans text-lg hover:text-accent-400">07 81 25 10 04</a>
+                        </div>
+
+                        <div class="rounded-xl border border-parchemin-300/10 bg-cuir-600 p-5">
+                            <p class="font-sans text-xs uppercase tracking-widest text-parchemin-200">Email</p>
+                            <a href="mailto:brandon.chhoeum@epitech.eu" class="mt-2 block break-all font-sans text-lg hover:text-accent-400">brandon.chhoeum@epitech.eu</a>
+                        </div>
+
+                        <div class="rounded-xl border border-parchemin-300/10 bg-cuir-600 p-5">
+                            <p class="font-sans text-xs uppercase tracking-widest text-parchemin-200">LinkedIn</p>
+                            <a
+                                href="https://www.linkedin.com/in/brandon-chhoeum-81a5a62b0"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-2 block break-all font-sans text-lg hover:text-accent-400"
+                            >
+                                www.linkedin.com/in/brandon-chhoeum-81a5a62b0
+                            </a>
+                        </div>
+
+                        <div class="rounded-xl border border-parchemin-300/10 bg-cuir-600 p-5">
+                            <p class="font-sans text-xs uppercase tracking-widest text-parchemin-200">Localisation</p>
+                            <p class="mt-2 font-sans text-lg">Toulouse</p>
+                        </div>
+                    </div>
+
+                    <form id="contact-form" class="reveal space-y-5 rounded-2xl bg-parchemin-50 p-6 text-cuir-800 sm:p-8">
+                        <div>
+                            <label for="name" class="font-sans text-sm font-bold">Nom</label>
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                required
+                                placeholder="Votre nom"
+                                class="mt-2 w-full rounded-lg border border-parchemin-300 bg-white px-4 py-3 font-sans outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="email" class="font-sans text-sm font-bold">Email</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                placeholder="votre@email.com"
+                                class="mt-2 w-full rounded-lg border border-parchemin-300 bg-white px-4 py-3 font-sans outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="message" class="font-sans text-sm font-bold">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                required
+                                placeholder="Votre message..."
+                                class="mt-2 w-full resize-none rounded-lg border border-parchemin-300 bg-white px-4 py-3 font-sans outline-none transition focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="w-full rounded-lg bg-accent-500 px-6 py-4 font-sans font-bold text-cuir-950 transition duration-300 hover:-translate-y-1 hover:bg-accent-400"
+                        >
+                            Envoyer le message
+                        </button>
+
+                        <p id="form-message" class="hidden rounded-lg bg-sauge-100 p-3 text-center font-sans text-sm text-cuir-800" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-cuir-950 px-5 py-8 text-center text-parchemin-400">
+        <p class="font-sans text-sm">© 2026 Chhoeum Brandon — CV Portfolio</p>
+        <p class="mt-2 font-sans text-xs">Créé avec HTML, Tailwind CSS et JavaScript.</p>
+    </footer>
+
+    <!-- Thème et apparition au défilement partagés avec le portfolio, puis menu et formulaire du CV -->
+
+    <script>
+        import "../../scripts/resume.js";
+    </script>
+</BaseLayout>

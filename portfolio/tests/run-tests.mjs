@@ -1,6 +1,6 @@
 /* =========================================================
    TESTS AUTOMATISÉS DU PORTFOLIO
-   Lancement : npm install --save-dev puppeteer  puis  npm test
+   Lancement : npm install --save-dev puppeteer  puis  npm test (teste le build Astro de dist/)
    Vérifie : erreurs console, 404, IDs uniques, titres, SEO (title,
    description, Open Graph, favicon), navigation, thème, menu mobile,
    responsive, scénario complet de la page Projets, formulaire et liens.
@@ -11,16 +11,19 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+const PREFIX = '/Projet_Portfolio/'; // base d'astro.config.mjs
 const TYPES = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript', '.png':'image/png', '.jpg':'image/jpeg', '.webp':'image/webp', '.pdf':'application/pdf', '.xml':'application/xml', '.txt':'text/plain', '.svg':'image/svg+xml' };
 const server = http.createServer((req, res) => {
-  const file = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));
-  if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) { res.writeHead(404); return res.end('404'); }
+  const url = decodeURIComponent(req.url.split('?')[0]);
+  let file = path.join(ROOT, url.slice(PREFIX.length - 1));
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
+  if (!url.startsWith(PREFIX) || !file.startsWith(ROOT) || !fs.existsSync(file)) { res.writeHead(404); return res.end('404'); }
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
   fs.createReadStream(file).pipe(res);
 }).listen(8099);
-const BASE='http://localhost:8099/';
-const pages = ['index.html','src/pages/about.html','src/pages/projects.html','src/pages/wip.html','src/pages/contact.html','src/projet/resume/resume.html'];
+const BASE='http://localhost:8099'+PREFIX;
+const pages = ['','about/','projects/','wip/','contact/','projet/resume/'];
 const browser = await puppeteer.launch({ headless: true });
 const results=[]; const R=(page,test,ok,info='')=>{results.push({page,test,ok,info}); console.log(ok?'PASS':'FAIL', page,'|',test, info?'| '+info:'');};
 
@@ -83,7 +86,7 @@ for (const p of pages) {
 
 // --- Projects page checklist
 {
-  const {page, errors} = await open('src/pages/projects.html');
+  const {page, errors} = await open('projects/');
   R('projects','Registre fermé au chargement', await page.$eval('#registry-toggle',e=>e.getAttribute('aria-expanded'))==='false' && !(await page.$eval('#project-list',e=>e.classList.contains('expanded'))));
   const listH = await page.$eval('#project-list', e=>({h:e.getBoundingClientRect().height, o:getComputedStyle(e).opacity}));
   R('projects','Aucune carte visible registre fermé', listH.h<1 || listH.o==='0', JSON.stringify(listH));
@@ -118,11 +121,11 @@ for (const p of pages) {
   await page.click('.project-card-item[data-project-id="cv"]'); await new Promise(r=>setTimeout(r,300));
   await Promise.all([page.waitForNavigation({waitUntil:'networkidle0'}).catch(()=>{}), page.click('[data-action="preview"]')]);
   const url = page.url(); const st = await page.evaluate(()=>document.title);
-  R('projects','« Preview » du CV ouvre resume.html', url.endsWith('/src/projet/resume/resume.html'), url+' ('+st+')');
+  R('projects','« Preview » du CV ouvre le CV', url.endsWith('/projet/resume/'), url+' ('+st+')');
   R('projects','Pas d\'erreur JS pendant le scénario', errors.length===0, errors.join(' ; '));
   await page.close();
   // github without project
-  const g = await open('src/pages/projects.html');
+  const g = await open('projects/');
   await g.page.click('#github-cat'); await new Promise(r=>setTimeout(r,200));
   R('projects','Chat GitHub sans projet → invite à sélectionner', (await g.page.$eval('#github-message',e=>e.textContent)).includes('Sélectionne'));
   await g.page.close();
@@ -130,7 +133,7 @@ for (const p of pages) {
 
 // --- Contact: form validation & CV download link
 {
-  const {page} = await open('src/pages/contact.html');
+  const {page} = await open('contact/');
   await page.click('#scroll-open'); await new Promise(r=>setTimeout(r,900));
   R('contact','Parchemin s\'ouvre', await vis(page,'#contact-form'));
   const valid = await page.$eval('#contact-form', f=>f.checkValidity());
@@ -163,5 +166,4 @@ await browser.close();
 server.close();
 const failed = results.filter(r => !r.ok);
 console.log('\nTOTAL', (results.length - failed.length) + '/' + results.length, 'PASS');
-// L'URL canonique dépend de l'adresse de déploiement : elle est signalée sans faire échouer la suite.
-process.exitCode = failed.filter(r => r.test !== 'URL canonique').length ? 1 : 0;
+process.exitCode = failed.length ? 1 : 0;

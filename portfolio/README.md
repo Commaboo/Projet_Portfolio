@@ -1,58 +1,55 @@
 # Portfolio — Brandon Chhoeum
 
-Portfolio personnel d'un étudiant en informatique (EPITECH Toulouse), construit en **HTML, Tailwind CSS et JavaScript**, avec une identité visuelle inspirée de la fantasy et du jeu de rôle. Les parties les plus interactives sont des « îlots » **React**.
+Portfolio personnel d'un étudiant en informatique (EPITECH Toulouse), construit avec **Astro, Tailwind CSS et JavaScript**, avec une identité visuelle inspirée de la fantasy et du jeu de rôle. Les parties les plus interactives sont des « îlots » **React**.
 
 ## Pages
 
 | Page | Fichier | Contenu |
 |---|---|---|
-| Accueil | `index.html` | Présentation, aperçu des projets, accès aux sections |
-| À propos | `src/pages/about.html` | Parcours, compétences, centres d'intérêt |
-| Projets | `src/pages/projects.html` | Bureau de mage interactif : registre, parchemin, glisser-déposer |
-| Rôle & Fairies | `src/pages/wip.html` | Projet D&D en cours : fonctionnalités, progression, roadmap |
-| Contact | `src/pages/contact.html` | E-mail, réseaux, CV PDF, formulaire (Formspree) |
-| CV interactif | `src/projet/resume/resume.html` | Projet « CV interactif » |
+| Accueil | `src/pages/index.astro` | Présentation, aperçu des projets, accès aux sections |
+| À propos | `src/pages/about.astro` | Parcours, compétences, centres d'intérêt |
+| Projets | `src/pages/projects.astro` | Bureau de mage interactif : registre, parchemin, glisser-déposer |
+| Rôle & Fairies | `src/pages/wip.astro` | Projet D&D en cours : fonctionnalités, progression, roadmap |
+| Contact | `src/pages/contact.astro` | E-mail, réseaux, CV PDF, formulaire (Formspree) |
+| CV interactif | `src/pages/projet/resume.astro` | Projet « CV interactif » |
 
 ## Structure
 
 ```text
 portfolio/
-├── index.html
-├── robots.txt / sitemap.xml
-├── public/
+├── astro.config.mjs  site, base (/Projet_Portfolio/), React, Tailwind
+├── public/           copié tel quel dans dist/
 │   ├── documents/    CV_CHHOEUM_Brandon.pdf
 │   ├── icons/        favicon-32.png, apple-touch-icon.png, spellbook (1).png
-│   └── images/       bg_hero_index.webp (utilisée), bg_hero_index.jpg (originale)
+│   ├── images/       bg_hero_index.webp (utilisée), bg_hero_index.jpg (originale)
+│   └── robots.txt / sitemap.xml
 ├── src/
-│   ├── css/          input.css + components.css → output.css (généré par Tailwind)
-│   │                 about.css, contact.css, projects.css, wip.css (une feuille par page)
-│   ├── js/           main.js (thème, menu mobile, apparitions), about.js, contact.js, wip.js
-│   │   └── dist/     bundle React généré par Vite (non versionné)
-│   ├── react/
-│   │   └── projects/ bureau du mage en React (data.js + composants)
-│   ├── pages/        about, contact, projects, wip
-│   └── projet/resume CV interactif
-├── tests/            run-tests.mjs (tests automatisés)
-└── .github/workflows/deploy.yml   déploiement GitHub Pages
+│   ├── layouts/      BaseLayout.astro (<head>, SEO, thème, main.js)
+│   ├── components/   Nav.astro (navigation principale)
+│   ├── pages/        une page .astro = une URL (index, about, projects, wip, contact, projet/resume)
+│   ├── styles/       global.css (Tailwind) + components.css, une feuille par page
+│   ├── scripts/      main.js (thème, menu mobile, apparitions), about.js, contact.js, wip.js, resume.js
+│   └── react/
+│       └── projects/ bureau du mage en React (data.js + composants)
+├── tests/            run-tests.mjs (tests automatisés sur dist/)
+└── ../.github/workflows/deploy.yml   déploiement GitHub Pages
 ```
 
 ## Installation et lancement
 
 ```bash
 npm install
-npm run dev      # recompile output.css ET le bundle React à chaque modification
-npm run serve    # (2e terminal) sert le site sur http://localhost:8080
+npm run dev      # http://localhost:4321/Projet_Portfolio/ avec rechargement à chaud
 ```
-
-> La page Projets charge `src/js/dist/projects-app.js`, généré par Vite. Sans `npm run dev` ou `npm run build`, le bureau du mage reste vide.
-
-> `src/css/output.css` est **généré** par Tailwind : ne pas le modifier à la main. Les styles communs se modifient dans `components.css`, ceux d'une page dans sa propre feuille.
 
 ## Build
 
 ```bash
-npm run build    # output.css minifié + bundle React (vite build)
+npm run build    # génère le site statique dans dist/
+npm run preview  # sert dist/ pour vérifier le build
 ```
+
+> Les liens internes passent par `import.meta.env.BASE_URL` (ex. `` href={`${base}about/`} ``) pour fonctionner sous `/Projet_Portfolio/`.
 
 ## Tests
 
@@ -61,23 +58,22 @@ npm install --save-dev puppeteer   # une seule fois
 npm test
 ```
 
-Le script lance son propre petit serveur et vérifie : absence d'erreur JavaScript et de 404, IDs uniques, un seul `<h1>` et une hiérarchie de titres correcte, balises SEO (title, meta description, Open Graph, favicon), navigation desktop, bouton de thème, menu mobile, absence de défilement horizontal à 375 px, scénario complet de la page Projets, validation du formulaire, CV PDF non vide et liens internes.
+Le script construit le site, le sert depuis `dist/` et vérifie : absence d'erreur JavaScript et de 404, IDs uniques, un seul `<h1>` et une hiérarchie de titres correcte, balises SEO (title, meta description, Open Graph, favicon, URL canonique), navigation desktop, bouton de thème, menu mobile, absence de défilement horizontal à 375 px, scénario complet de la page Projets, validation du formulaire, CV PDF non vide et liens internes.
 
-Audit Lighthouse : `npx lighthouse http://localhost:8080 --view` (ou onglet Lighthouse des DevTools de Chrome).
+Audit Lighthouse : `npm run preview` puis `npx lighthouse http://localhost:4321/Projet_Portfolio/ --view`.
 
 ## Déploiement
 
-Le workflow `.github/workflows/deploy.yml` compile le CSS et publie le site sur **GitHub Pages** à chaque push sur `main`.
+Le workflow `.github/workflows/deploy.yml` lance `npm run build` et publie `dist/` sur **GitHub Pages** à chaque push sur `main`.
 Activation : *Settings → Pages → Source : GitHub Actions*.
-
-Après le premier déploiement, remplacer l'adresse provisoire `https://commaboo.github.io/portfolio/` dans `robots.txt` et `sitemap.xml` par l'adresse réelle du site.
 
 ## Choix techniques
 
-- **Tailwind CSS v4 (utility-first)** : grande liberté graphique et responsive rapide ; les composants répétés (boutons, badges, cartes, navigation) sont regroupés dans `components.css` avec `@apply`.
+- **Tailwind CSS v4 (utility-first)** : grande liberté graphique et responsive rapide ; les composants répétés (boutons, badges, cartes, navigation) sont regroupés dans `components.css` avec `@apply`. Tailwind est branché via `@tailwindcss/vite`.
 - **JavaScript sans framework** pour les fonctionnalités communes (thème, menu mobile, apparitions) et les pages simples.
-- **React en « îlots » (Vite)** : seule la zone `<section id="projects-root">` de la page Projets est rendue par React. Un état unique (`selectedId`, `registryOpen`, `detail`) pilote l'affichage, ce qui évite les désynchronisations entre HTML et JavaScript. Le reste du site reste en HTML statique. Les IDs et classes sont identiques à la version précédente : `projects.css` et les tests n'ont pas changé.
-- **Ajouter un îlot React** : créer `src/react/<nom>/main.jsx`, l'ajouter dans `rollupOptions.input` de `vite.config.mjs`, puis charger `../js/dist/<nom>.js` avec `type="module"` dans la page.
+- **Astro** : pages statiques, layout et navigation partagés (fini le `<head>` copié dans chaque fichier), CSS et JS regroupés et minifiés au build.
+- **React en « îlots »** : seul `<ProjectsDesk client:load />` dans la page Projets est hydraté côté client ; il est aussi pré-rendu en HTML au build. Un état unique (`selectedId`, `registryOpen`, `detail`) pilote l'affichage.
+- **Ajouter un îlot React** : importer le composant dans la page `.astro` et l'utiliser avec une directive `client:*` (`client:load`, `client:visible`…).
 - **Thème sombre** : classe `dark` sur `<html>`, appliquée dans le `<head>` avant l'affichage pour éviter un flash clair, choix mémorisé dans `localStorage`.
 - **Image d'en-tête en WebP** (116 Ko au lieu de 1,16 Mo en JPEG), préchargée en priorité.
 - **Formulaire** : traité par Formspree, le site restant 100 % front-end.
