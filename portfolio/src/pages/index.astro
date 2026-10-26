@@ -1,8 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
 
 const base = import.meta.env.BASE_URL;
+const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout title="Brandon Chhoeum — Portfolio d'un étudiant développeur web" description="Portfolio de Brandon Chhoeum, étudiant en informatique à EPITECH Toulouse : projets web, parcours d'apprentissage et contact, dans un univers fantasy." preloadHero>
@@ -25,8 +28,8 @@ const base = import.meta.env.BASE_URL;
                     </div>
 
                     <h1 class="text-5xl font-bold leading-tight text-parchemin-50 md:text-6xl lg:text-7xl">
-                        Mes aventures
-                        <span class="text-accent-300">encapsulées</span>
+                        Mes aventures 
+                        <span class="text-accent-300">encapsulées </span>
                         en expériences.
                     </h1>
 
@@ -50,7 +53,7 @@ const base = import.meta.env.BASE_URL;
 
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-parchemin-200/70" aria-hidden="true">
                 <span class="block text-xs uppercase tracking-[0.25em]">Explorer</span>
-                <span class="mt-2 block animate-bounce text-lg">↓</span>
+                <span class="mt-2 block text-lg motion-safe:animate-bounce">↓</span>
             </div>
         </section>
 
@@ -67,124 +70,7 @@ const base = import.meta.env.BASE_URL;
             </div>
 
             <div class="grid gap-8 md:grid-cols-2">
-                <article class="fantasy-card project-card">
-                    <div class="project-magic-card magic-theme-ember">
-                        <div class="magic-orbit magic-orbit-outer"></div>
-                        <div class="magic-orbit magic-orbit-inner"></div>
-                        <div class="magic-glow"></div>
-                        <div class="magic-rune">✦</div>
-                        <div class="magic-particles" aria-hidden="true">
-                            <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
-                        </div>
-                        <div class="magic-card-content">
-                            <span class="magic-card-label">Projet terminé</span>
-                            <strong>CV interactif</strong>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <span class="tag tag-sauge">Septembre 2026</span>
-                        <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">CV interactif</h3>
-                        <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
-                            Transformer un CV classique en une
-                            expérience web plus interactive,
-                            en travaillant sur la structure,
-                            le design et les interactions.
-                        </p>
-                        <a href={`${base}projects/`} class="arrow-link mt-5">
-                            Voir le projet <span class="arrow">→</span>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="fantasy-card project-card">
-                    <div class="project-magic-card magic-theme-arcane">
-                        <div class="magic-orbit magic-orbit-outer"></div>
-                        <div class="magic-orbit magic-orbit-inner"></div>
-                        <div class="magic-glow"></div>
-                        <div class="magic-rune">◇</div>
-                        <div class="magic-particles" aria-hidden="true">
-                            <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
-                        </div>
-                        <div class="magic-card-content">
-                            <span class="magic-card-label">Projet terminé</span>
-                            <strong>Parcours Python</strong>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <span class="tag tag-sauge">Septembre 2026</span>
-                        <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Parcours Python</h3>
-                        <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
-                            Un parcours d'apprentissage autour
-                            des fondamentaux de Python, des exercices
-                            pratiques et de la création d'un jeu
-                            avec Pygame.
-                        </p>
-                        <a href={`${base}projects/`} class="arrow-link mt-5">
-                            Voir le projet <span class="arrow">→</span>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="fantasy-card project-card">
-                    <div class="project-magic-card magic-theme-sage">
-                        <div class="magic-orbit magic-orbit-outer"></div>
-                        <div class="magic-orbit magic-orbit-inner"></div>
-                        <div class="magic-glow"></div>
-                        <div class="magic-rune">✧</div>
-                        <div class="magic-particles" aria-hidden="true">
-                            <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
-                        </div>
-                        <div class="magic-card-content">
-                            <span class="magic-card-label">Projet en cours</span>
-                            <strong>Rôle &amp; Fairies</strong>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <span class="tag tag-sauge">2026 → aujourd'hui</span>
-                        <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Rôle &amp; Fairies</h3>
-                        <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
-                            Un projet personnel autour du jeu de rôle,
-                            du développement web et de l'exploration
-                            de nouvelles technologies.
-                        </p>
-                        <a href={`${base}wip/`} class="arrow-link mt-5">
-                            Découvrir l'aventure <span class="arrow">→</span>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="fantasy-card project-card">
-                    <div class="project-magic-card magic-theme-parchment">
-                        <div class="magic-orbit magic-orbit-outer"></div>
-                        <div class="magic-orbit magic-orbit-inner"></div>
-                        <div class="magic-glow"></div>
-                        <div class="magic-rune">❖</div>
-                        <div class="magic-particles" aria-hidden="true">
-                            <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
-                        </div>
-                        <div class="magic-card-content">
-                            <span class="magic-card-label">Projet en cours</span>
-                            <strong>Portfolio personnel</strong>
-                        </div>
-                    </div>
-
-                    <div class="p-6">
-                        <span class="tag tag-sauge">2026 → aujourd'hui</span>
-                        <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">Portfolio personnel</h3>
-                        <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">
-                            Mon premier véritable univers web,
-                            conçu pour présenter mon parcours,
-                            mes projets et les compétences que
-                            je développe.
-                        </p>
-                        <a href={`${base}projects/`} class="arrow-link mt-5">
-                            Voir mes projets <span class="arrow">→</span>
-                        </a>
-                    </div>
-                </article>
+                {projects.map((project) => <ProjectCard project={project.data} />)}
             </div>
 
             <div class="reveal mt-12 text-center">
