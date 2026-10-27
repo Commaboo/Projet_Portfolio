@@ -5,12 +5,12 @@
    ========================================================= */
 
 import { useEffect, useRef, useState } from "react";
-import { projects } from "./data.js";
 import Parchment from "./Parchment.jsx";
 import Registry from "./Registry.jsx";
 import GithubCat from "./GithubCat.jsx";
 
-export default function ProjectsDesk() {
+// projects : fourni par projects.astro depuis src/content/projects.yaml
+export default function ProjectsDesk({ projects }) {
     // Au chargement : aucun projet, registre fermé, aucun détail ouvert.
     const [selectedId, setSelectedId] = useState(null);
     const [registryOpen, setRegistryOpen] = useState(false);

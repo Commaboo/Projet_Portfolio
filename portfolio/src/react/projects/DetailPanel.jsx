@@ -1,6 +1,4 @@
-/* =========================================================
-   DÉTAIL — Parcours, Compétences ou Preview indisponible
-   ========================================================= */
+/* DÉTAIL — Parcours, Compétences ou Preview indisponible  */
 
 import Placeholder from "./Placeholder.jsx";
 

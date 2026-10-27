@@ -603,3 +603,41 @@
 .dark .footer-dark .arrow-link {
     @apply text-accent-300;
 }
+
+
+/* TRANSITIONS ENTRE LES PAGES
+   Transitions natives du navigateur (Chrome, Edge, Safari 18.2+) : aucun JavaScript,
+   les scripts des pages se chargent normalement. Les autres navigateurs changent de page sans animation. */
+
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+/* La barre de navigation reste en place pendant que le contenu change. */
+.site-nav {
+    view-transition-name: site-nav;
+}
+
+::view-transition-old(root) {
+    animation: page-leave 200ms ease-in both;
+}
+
+::view-transition-new(root) {
+    animation: page-enter 350ms ease-out both;
+}
+
+@keyframes page-leave {
+    to {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}

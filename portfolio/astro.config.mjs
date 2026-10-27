@@ -8,6 +8,9 @@ export default defineConfig({
     site: "https://commaboo.github.io",
     base: "/Projet_Portfolio/",
     integrations: [react()],
+    // Espaces à la manière du HTML : un retour à la ligne entre un texte et une balise reste un espace
+    // (le mode "jsx" par défaut les supprime : « aventures<span>encapsulées</span>en »).
+    compressHTML: true,
     vite: {
         plugins: [tailwindcss()],
     },
