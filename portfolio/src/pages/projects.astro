@@ -3,8 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/projects.css";
 import ProjectsDesk from "../react/projects/ProjectsDesk.jsx";
+import { getCollection } from "astro:content";
 
 const base = import.meta.env.BASE_URL;
+
+// React reçoit des objets simples : l'id + les champs du YAML, chemins complétés avec la base.
+const projects = (await getCollection("projects"))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(({ id, data }) => ({ ...data, id, previewUrl: data.previewUrl && `${base}${data.previewUrl}` }));
 ---
 
 <BaseLayout title="Projets | Brandon Chhoeum" description="Les projets de Brandon Chhoeum : CV interactif, parcours Python avec Pygame, Rôle & Fairies et ce portfolio, présentés sur un bureau de mage interactif." preloadHero>
@@ -40,7 +46,7 @@ const base = import.meta.env.BASE_URL;
 
         <!-- BUREAU DU MAGE : rendu par React (src/react/projects/) -->
         <section id="projects-root" class="mage-workspace">
-            <ProjectsDesk client:load />
+            <ProjectsDesk client:load projects={projects} />
         </section>
     </main>
 

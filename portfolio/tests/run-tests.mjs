@@ -18,7 +18,8 @@ const server = http.createServer((req, res) => {
   const url = decodeURIComponent(req.url.split('?')[0]);
   let file = path.join(ROOT, url.slice(PREFIX.length - 1));
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
-  if (!url.startsWith(PREFIX) || !file.startsWith(ROOT) || !fs.existsSync(file)) { res.writeHead(404); return res.end('404'); }
+  // Comme GitHub Pages : une adresse inconnue reçoit dist/404.html avec le statut 404.
+  if (!url.startsWith(PREFIX) || !file.startsWith(ROOT) || !fs.existsSync(file)) { res.writeHead(404, { 'Content-Type': TYPES['.html'] }); return fs.createReadStream(path.join(ROOT, '404.html')).pipe(res); }
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
   fs.createReadStream(file).pipe(res);
 }).listen(8099);
@@ -129,6 +130,27 @@ for (const p of pages) {
   await g.page.click('#github-cat'); await new Promise(r=>setTimeout(r,200));
   R('projects','Chat GitHub sans projet → invite à sélectionner', (await g.page.$eval('#github-message',e=>e.textContent)).includes('Sélectionne'));
   await g.page.close();
+}
+
+// --- Espaces conservés entre un texte et une balise (régression du mode compressHTML "jsx")
+{
+  const page = await browser.newPage();
+  await page.goto(BASE,{waitUntil:'networkidle0'});
+  const h1 = await page.$eval('h1', e => e.textContent.replace(/\s+/g,' ').trim());
+  R('global','Espaces autour des balises dans le texte', h1.includes('aventures encapsulées en'), h1);
+  await page.close();
+}
+
+// --- 404 : page thématique et redirection des anciennes adresses .html
+{
+  const page = await browser.newPage();
+  await page.goto(BASE+'chemin-inexistant/',{waitUntil:'networkidle0'});
+  R('404','Adresse inconnue → page 404 du site', (await page.$eval('h1',e=>e.textContent)).includes('brouillard'));
+  await page.goto(BASE+'src/pages/about.html#parcours',{waitUntil:'networkidle0'});
+  R('404','Ancienne adresse about.html → /about/', page.url()===BASE+'about/#parcours', page.url());
+  await page.goto(BASE+'src/projet/resume/resume.html',{waitUntil:'networkidle0'});
+  R('404','Ancienne adresse du CV → /projet/resume/', page.url()===BASE+'projet/resume/', page.url());
+  await page.close();
 }
 
 // --- Contact: form validation & CV download link

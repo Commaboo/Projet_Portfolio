@@ -12,6 +12,7 @@ Portfolio personnel d'un étudiant en informatique (EPITECH Toulouse), construit
 | Rôle & Fairies | `src/pages/wip.astro` | Projet D&D en cours : fonctionnalités, progression, roadmap |
 | Contact | `src/pages/contact.astro` | E-mail, réseaux, CV PDF, formulaire (Formspree) |
 | CV interactif | `src/pages/projet/resume.astro` | Projet « CV interactif » |
+| 404 | `src/pages/404.astro` | Page introuvable ; redirige les anciennes adresses `.html` vers les nouvelles |
 
 ## Structure
 
@@ -25,12 +26,14 @@ portfolio/
 │   └── robots.txt / sitemap.xml
 ├── src/
 │   ├── layouts/      BaseLayout.astro (<head>, SEO, thème, main.js)
-│   ├── components/   Nav.astro (navigation principale)
+│   ├── components/   Nav.astro (navigation principale), ProjectCard.astro (carte projet de l'accueil)
+│   ├── content/      projects.yaml : les projets, source unique pour l'accueil et le bureau du mage
+│   ├── content.config.ts  schéma qui vérifie projects.yaml au build
 │   ├── pages/        une page .astro = une URL (index, about, projects, wip, contact, projet/resume)
 │   ├── styles/       global.css (Tailwind) + components.css, une feuille par page
 │   ├── scripts/      main.js (thème, menu mobile, apparitions), about.js, contact.js, wip.js, resume.js
 │   └── react/
-│       └── projects/ bureau du mage en React (data.js + composants)
+│       └── projects/ bureau du mage en React (reçoit les projets en props)
 ├── tests/            run-tests.mjs (tests automatisés sur dist/)
 └── ../.github/workflows/deploy.yml   déploiement GitHub Pages
 ```
@@ -66,6 +69,10 @@ Audit Lighthouse : `npm run preview` puis `npx lighthouse http://localhost:4321/
 
 Le workflow `.github/workflows/deploy.yml` lance `npm run build` et publie `dist/` sur **GitHub Pages** à chaque push sur `main`.
 Activation : *Settings → Pages → Source : GitHub Actions*.
+
+## Modifier un projet
+
+Tout se passe dans `src/content/projects.yaml` : la carte de l'accueil (bloc `home`) et le bureau du mage se mettent à jour ensemble. Un champ manquant ou mal écrit fait échouer `npm run build` avec un message qui le nomme.
 
 ## Choix techniques
 

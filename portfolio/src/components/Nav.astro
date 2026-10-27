@@ -1,7 +1,8 @@
 ---
 /* NAVIGATION PRINCIPALE — le menu mobile et le thème sont gérés par scripts/main.js */
 interface Props {
-    active: "home" | "about" | "projects" | "wip" | "contact";
+    // Absent sur les pages hors menu (404) : aucun lien n'est marqué actif.
+    active?: "home" | "about" | "projects" | "wip" | "contact";
 }
 
 const { active } = Astro.props;

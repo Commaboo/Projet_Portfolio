@@ -1,0 +1,38 @@
+---
+/* CARTE PROJET DE L'ACCUEIL — données issues de src/content/projects.yaml */
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    project: CollectionEntry<"projects">["data"];
+}
+
+const { project } = Astro.props;
+const { home } = project;
+const base = import.meta.env.BASE_URL;
+const label = project.statusType === "completed" ? "Projet terminé" : "Projet en cours";
+---
+
+<article class="fantasy-card project-card">
+    <div class={`project-magic-card magic-theme-${home.theme}`}>
+        <div class="magic-orbit magic-orbit-outer"></div>
+        <div class="magic-orbit magic-orbit-inner"></div>
+        <div class="magic-glow"></div>
+        <div class="magic-rune">{home.rune}</div>
+        <div class="magic-particles" aria-hidden="true">
+            <span>✦</span><span>◇</span><span>✧</span><span>·</span><span>✦</span><span>◇</span>
+        </div>
+        <div class="magic-card-content">
+            <span class="magic-card-label">{label}</span>
+            <strong>{project.title}</strong>
+        </div>
+    </div>
+
+    <div class="p-6">
+        <span class="tag tag-sauge">{home.period}</span>
+        <h3 class="mt-4 text-2xl font-bold text-cuir-900 dark:text-parchemin-100">{project.title}</h3>
+        <p class="mt-3 leading-relaxed text-cuir-600 dark:text-parchemin-300">{home.summary}</p>
+        <a href={`${base}${home.link}`} class="arrow-link mt-5">
+            {home.linkLabel} <span class="arrow">→</span>
+        </a>
+    </div>
+</article>
